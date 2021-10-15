@@ -1,0 +1,19 @@
+{
+  "name": "ziverbot",
+  "version": "1.0.0",
+  "description": "The ziver bot js version",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc -w --skiplibCheck"
+  },
+  "author": "Thimo",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^13.2.0",
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4"
+  }
+}
