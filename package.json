@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tsc": "tsc -w --skiplibCheck"
+    "tsc": "tsc -w --skiplibCheck",
+    "dev": "nodemon main.js"
   },
   "author": "Thimo",
   "license": "ISC",
