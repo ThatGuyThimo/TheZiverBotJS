@@ -1,4 +1,4 @@
-# TheZiverBotJS a Discord bot for Youtuber TheZiver.
+# TheZiverBotJS
 
 **Version 1.0.0**
 
