@@ -11,7 +11,7 @@ This bot is a remake from the Python version because discord.py is end of life.
 ---
 ## NOTICE
 
-This bot is not jet up to the same working order as the bot in the Discord.
+This bot is not yet up to the same working order as the bot in the Discord.
 The bot running in the Discord is still the Python version as of Wednesday, 17 November 2021.
 
 ---
