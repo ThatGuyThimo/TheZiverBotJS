@@ -1,16 +1,18 @@
-# TheZiverBotJS a discord bot for Youtuber TheZiver.
+# TheZiverBotJS a Discord bot for Youtuber TheZiver.
 
 **Version 1.0.0**
 
-TheZiverBotJS is a discord bot for Youtuber TheZiver.
+TheZiverBotJS is a Discord bot for Youtuber TheZiver.
+- Discord https://discord.gg/Z34mSSM
+- Youtube https://www.youtube.com/c/TheZiver
 
 This bot is a remake from the Python version because discord.py is end of life.
 
 ---
 ## NOTICE
 
-This bot is not jet up to the same working order as the bot in the discord.
-The bot running in the discord is still the Python version as of Wednesday, 17 November 2021.
+This bot is not jet up to the same working order as the bot in the Discord.
+The bot running in the Discord is still the Python version as of Wednesday, 17 November 2021.
 
 ---
 ## Documentation
