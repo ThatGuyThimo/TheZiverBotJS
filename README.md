@@ -4,7 +4,7 @@
 
 TheZiverBotJS is a Discord bot for Youtuber TheZiver.
 - Discord https://discord.gg/Z34mSSM
-- Youtube https://www.youtube.com/
+- YouTube https://youtube.com/c/TheZiver
 
 This bot is a remake from the Python version because discord.py is end of life.
 
@@ -21,7 +21,7 @@ Comming soon.
 ---
 ## Contributors
 
-- Thimo de Haan
+- ThatGuyThimo
 
 --- 
 ## License & copyright
