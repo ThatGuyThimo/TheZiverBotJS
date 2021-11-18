@@ -6,13 +6,13 @@ const Event = require("./Event.js");
 
 const config = require("../Data/config.json");
 
-const intents = new Discord.Intents(513);
+const intents = new Discord.Intents(641);
 
 const fs = require("fs");
 
 class Client extends Discord.Client {
     constructor() {
-        super({ intents });
+        super({ intents, allowedMentions: { repliedUser: false } });
 
         /**
          * @type {Discord.Collection<string, command>}

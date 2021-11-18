@@ -8,9 +8,8 @@ const Client = require("./Client.js");
  * @param {String[]} args 
  * @param {Client} client 
  */
-function RunFunction(message, args, client) {
+function RunFunction(message, args, client) {}
 
-}
 
 class Command {
     /**

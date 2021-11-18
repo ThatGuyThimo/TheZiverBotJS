@@ -2,15 +2,13 @@ const Command = require("../Structures/Command.js");
 
 const fs = require('fs');
 
-require("../Classes/functions.js");
-
 module.exports = new Command({
-    name:           "fish",
-    description:    "responds with random fish gif",
+    name:           "spin",
+    description:    "responds with random spinny gif",
 
     async run(message, args, client) {
 
-        let array = fs.readFileSync("./Data/fish.json");
+        let array = fs.readFileSync("./Data/spinny.json");
         let data = JSON.parse(array);
 
         var keylist = Object.keys(data.gifs);
