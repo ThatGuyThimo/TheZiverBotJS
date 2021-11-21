@@ -22,6 +22,11 @@ module.exports = new Command({
             .setTimestamp(message.createdTimestamp)
             .addFields(
                 {
+                    name: `${config.prefix}about`,
+                    value: "gives info about theZiverBot",
+                    inline: false
+                },
+                {
                     name: `${config.prefix}help`,
                     value: "gives info about theZiverBot text commands",
                     inline: false
