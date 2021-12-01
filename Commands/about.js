@@ -9,12 +9,12 @@ module.exports = new Command({
 
         const embed = new Discord.MessageEmbed();
 
-        embed.setTitle("About theZiverbot")
+        embed.setTitle(`About ${client.user.username},`)
             .setAuthor(
-                message.author.username, 
+                message.author.username,
                 message.author.avatarURL({ dynamic: true })
-                )
-            .setDescription("Information about theZiverbot")
+            )
+            .setDescription(`Information about ${client.user.username}`)
             .setColor("GREEN")
             .setThumbnail(client.user.avatarURL({ dynamic: true }))
             .setTimestamp(message.createdTimestamp)
@@ -22,13 +22,13 @@ module.exports = new Command({
             .addFields(
                 {
                     name: "Bot Version",
-                    value: "1.0.3",
+                    value: "1.0.4",
                     inline: false
                 },
                 {
                     name: "Bot name",
                     value: client.user.username,
-                    inline: false 
+                    inline: false
                 },
                 {
                     name: "Code",

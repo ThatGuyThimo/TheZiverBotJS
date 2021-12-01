@@ -11,29 +11,29 @@ module.exports = new Command({
 
         const embed = new Discord.MessageEmbed();
 
-        embed.setTitle("TheZiverbot help")
+        embed.setTitle(`${client.user.username} help`)
             .setAuthor(
-                message.author.username, 
+                message.author.username,
                 message.author.avatarURL({ dynamic: true })
-                )
-            .setDescription("Information and usage of TheZiverBot")
+            )
+            .setDescription(`Information and usage of ${client.user.username}`)
             .setColor("GREEN")
             .setThumbnail(client.user.avatarURL({ dynamic: true }))
             .setTimestamp(message.createdTimestamp)
             .addFields(
                 {
                     name: `${config.prefix}about`,
-                    value: "gives info about theZiverBot",
+                    value: `gives info about ${client.user.username}`,
                     inline: false
                 },
                 {
                     name: `${config.prefix}help`,
-                    value: "gives info about theZiverBot text commands",
+                    value: `gives info about ${client.user.username} text commands`,
                     inline: false
                 },
                 {
                     name: `${config.prefix}voicehelp`,
-                    value: "gives info about theZiverBot voice commands",
+                    value: `gives info about ${client.user.username} voice commands`,
                     inline: false
                 },
                 {

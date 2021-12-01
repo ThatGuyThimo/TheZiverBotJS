@@ -1,6 +1,6 @@
 {
   "name": "ziverbot",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "The ziver bot js version",
   "main": "main.js",
   "scripts": {
@@ -11,6 +11,7 @@
   "author": "Thimo",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^13.2.0"
+    "discord.js": "^13.2.0",
+    "nodemon": "^2.0.15"
   }
 }
