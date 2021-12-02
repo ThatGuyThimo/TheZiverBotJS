@@ -6,7 +6,7 @@ const Event = require("./Event.js");
 
 const config = require("../Data/config.json");
 
-const intents = new Discord.Intents(641);
+const intents = new Discord.Intents(1675);
 
 const fs = require("fs");
 
@@ -34,7 +34,7 @@ class Client extends Discord.Client {
                 console.log(`Command ${command.name} loaded`);
                 this.commands.set(command.name, command);
 
-        });
+            });
 
         fs.readdirSync("./Events")
             .filter(file => file.endsWith(".js"))
@@ -46,7 +46,7 @@ class Client extends Discord.Client {
                 console.log(`Event ${event.event} loaded`);
                 this.on(event.event, event.run.bind(null, this));
 
-        });
+            });
 
         this.login(token);
     }
