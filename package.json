@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@discordjs/voice": "^0.7.5",
-    "discord.js": "^13.2.0",
+    "discord.js": "^13.3.1",
     "ffmpeg-static": "^4.4.0",
     "google-auth-library": "^7.10.2",
     "googleapis": "^92.0.0",

@@ -7,7 +7,7 @@ module.exports = new Command({
     description: "plays cabbagecat sound in vc",
 
     async run(message, args, client) {
-        playAudio('cabbagecat.wav', message);
+        playAudio('cabbagecat.mp3', message);
     }
 
 });
