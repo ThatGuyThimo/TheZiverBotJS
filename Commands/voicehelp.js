@@ -24,7 +24,7 @@ module.exports = new Command({
             .addFields(
                 {
                     name: `${config.prefix}intro`,
-                    value: "Y E S introduction",
+                    value: `${client.user.username} introduction`,
                     inline: false
                 },
                 {
