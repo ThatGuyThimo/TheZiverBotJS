@@ -1,43 +1,48 @@
 const Command = require("../Structures/Command.js");
 
+const { getChannel } = require("../Classes/youtube.js");
+
+const config = require("../Data/config.json");
+
 const Discord = require("discord.js");
 
 module.exports = new Command({
-    name: "about",
-    description: "shows info about the bot",
+    name: "channel",
+    description: "gives info on <@186113462584344577>",
+
     async run(message, args, client) {
+        getChannel(config['api_key']);
 
         const embed = new Discord.MessageEmbed();
 
-        embed.setTitle(`About ${client.user.username},`)
+        embed.setTitle(`Channel`)
             .setAuthor(
                 message.author.username,
                 message.author.avatarURL({ dynamic: true })
             )
-            .setDescription(`Information about ${client.user.username}`)
+            .setDescription(`Channel Information`)
             .setColor("GREEN")
-            .setThumbnail(client.user.avatarURL({ dynamic: true }))
+            .setThumbnail('https://cdn.discordapp.com/attachments/793311822555512873/897081743012663336/ziver_discord_picture-1.gif')
             .setTimestamp(message.createdTimestamp)
-            .setFooter("THIS BOT IS STILL A WIP")
             .addFields(
                 {
-                    name: "Bot Version",
-                    value: "1.0.5",
+                    name: "Subscrubercount",
+                    value: `${subcount}`,
                     inline: false
                 },
                 {
-                    name: "Bot name",
-                    value: client.user.username,
+                    name: "Video's",
+                    value: `${videoCount}`,
                     inline: false
                 },
                 {
-                    name: "Code",
-                    value: "Written in javascript using discord.js version 13.2.0",
+                    name: "View's",
+                    value: `${viewCount}`,
                     inline: false
                 },
             );
 
         message.channel.send({ embeds: [embed] });
-
     }
+
 });

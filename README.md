@@ -1,6 +1,6 @@
 # TheZiverBotJS
 
-**Version 1.0.3**
+**Version 1.0.5**
 
 TheZiverBotJS is a Discord bot for Youtuber TheZiver.
 - Discord https://discord.gg/Z34mSSM
