@@ -13,9 +13,9 @@ module.exports = new Command({
 
         embed.setTitle("TheZiverbot voicehelp")
             .setAuthor(
-                message.author.username, 
+                message.author.username,
                 message.author.avatarURL({ dynamic: true })
-                )
+            )
             .setDescription("Information and usage of TheZiverBot voice commands")
             .setColor("GREEN")
             .setThumbnail(client.user.avatarURL({ dynamic: true }))
@@ -23,8 +23,8 @@ module.exports = new Command({
             .setFooter("YOU HAVE TO BE IN A VOICE CHANNEL TO USE THESE COMMANDS")
             .addFields(
                 {
-                    name: `${config.prefix}assistant`,
-                    value: "theZiverBot introduction",
+                    name: `${config.prefix}intro`,
+                    value: "Y E S introduction",
                     inline: false
                 },
                 {
