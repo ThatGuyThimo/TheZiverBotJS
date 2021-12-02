@@ -7,7 +7,7 @@ module.exports = new Command({
     description: "plays beans sound in vc",
 
     async run(message, args, client) {
-        playAudio('beans.mp3', message);
+        playAudio('beansdrop.mp3', message);
     }
 
 });
