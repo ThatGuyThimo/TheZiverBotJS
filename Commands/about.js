@@ -32,7 +32,7 @@ module.exports = new Command({
                 },
                 {
                     name: "Code",
-                    value: "Written in javascript using discord.js version 13.2.0",
+                    value: "Written in javascript using discord.js version 13.3.1",
                     inline: false
                 },
             );
