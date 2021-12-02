@@ -11,12 +11,12 @@ module.exports = new Command({
 
         const embed = new Discord.MessageEmbed();
 
-        embed.setTitle("TheZiverbot voicehelp")
+        embed.setTitle(`${client.user.username} voicehelp`)
             .setAuthor(
                 message.author.username,
                 message.author.avatarURL({ dynamic: true })
             )
-            .setDescription("Information and usage of TheZiverBot voice commands")
+            .setDescription(`Information and usage of ${client.user.username} voice commands`)
             .setColor("GREEN")
             .setThumbnail(client.user.avatarURL({ dynamic: true }))
             .setTimestamp(message.createdTimestamp)
