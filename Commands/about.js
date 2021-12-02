@@ -18,7 +18,6 @@ module.exports = new Command({
             .setColor("GREEN")
             .setThumbnail(client.user.avatarURL({ dynamic: true }))
             .setTimestamp(message.createdTimestamp)
-            .setFooter("THIS BOT IS STILL A WIP")
             .addFields(
                 {
                     name: "Bot Version",
