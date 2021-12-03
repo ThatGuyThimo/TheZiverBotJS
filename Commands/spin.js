@@ -7,7 +7,7 @@ module.exports = new Command({
     description:    "responds with random spinny gif",
 
     async run(message, args, client) {
-        message.reply(randomArray("spin.json","gifs"));
+        message.reply(randomArray("spinny.json","gifs"));
     }
 
 });
