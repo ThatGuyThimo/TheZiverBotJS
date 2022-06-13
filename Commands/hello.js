@@ -1,7 +1,5 @@
 const Command = require("../Structures/Command.js");
 
-const { randomArray } = require("../Classes/functions.js");
-
 module.exports = new Command({
     name: "hello",
     description: "says hello",
