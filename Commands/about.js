@@ -34,6 +34,11 @@ module.exports = new Command({
                     value: "Written in javascript using discord.js version 13.3.1",
                     inline: false
                 },
+                {
+                    name: "Contributer",
+                    value: "-Thimo-",
+                    inline: false
+                },
             );
 
         message.channel.send({ embeds: [embed] });

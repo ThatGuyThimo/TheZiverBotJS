@@ -20,16 +20,31 @@ function randomArray(json, key) {
 
     return (data[key][keylist[ran_key]]);
 }
+/**
+ * 
+ * @param {array} array 
+ * @returns {String}
+ */
+function parsejson(array) {
+
+    let data = JSON.parse(array);
+    console.log(data);
+}
 
 /**
  * 
- * @param {Client} client  
+ * @param {Discord.Client} client  
  */
 function intervalPing(client) {
 
     let nowtime = new Date().getHours();
 
-    if (nowtime != time) {
+    let todayDay = new Date().getDate();
+    let todayMonth = new Date().getMonth();
+
+    if (todayDay == 7 && todayMonth == 6 ) {
+        client.channels.cache.get('897144218571653150').send("***HAPPY BIRTHDAY*** <@186113462584344577> <:tada:994438381314506822> <:confetti_ball:994439911228846120>");
+    } else if (nowtime != time) {
         client.channels.cache.get('897144218571653150').send(randomArray("pings.json", "pings"));
         time = nowtime;
     }
@@ -38,7 +53,7 @@ function intervalPing(client) {
 /**
  * 
  * @param {string} source 
- * @param {Discord.message} message 
+ * @param {Discord.Client.message} message 
  */
 function playAudio(source, message) {
     const channel = message.member.voice.channel;
@@ -63,4 +78,4 @@ function playAudio(source, message) {
     }
 }
 
-module.exports = { randomArray, intervalPing, playAudio };
+module.exports = { randomArray, intervalPing, playAudio, parsejson };
