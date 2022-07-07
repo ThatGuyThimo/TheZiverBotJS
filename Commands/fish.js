@@ -8,18 +8,6 @@ module.exports = new Command({
     description:    "responds with random fish gif",
     
     async run(message, args, client) {
-        
-
-        try {
-            
-            return result;
-        }
-        catch {
-            result = 'something went wrong';
-            console.log(result);
-            return result;
-        }
-
         message.reply(randomArray("fish.json","gifs"));
     }
 
