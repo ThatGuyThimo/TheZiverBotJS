@@ -4,7 +4,7 @@ const { randomArray, parsejson } = require("../Classes/functions.js");
 
 
 module.exports = new Command({
-    name:           "test",
+    name:           "fish",
     description:    "responds with random fish gif",
     
     async run(message, args, client) {
