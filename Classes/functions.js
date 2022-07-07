@@ -42,7 +42,7 @@ function intervalPing(client) {
     let todayDay = new Date().getDate();
     let todayMonth = new Date().getMonth();
 
-    if (todayDay == 7 && todayMonth == 6 ) {
+    if (todayDay == 7 && todayMonth == 6 && nowtime != time) {
         client.channels.cache.get('897144218571653150').send("***HAPPY BIRTHDAY*** <@186113462584344577> <:tada:994438381314506822> <:confetti_ball:994439911228846120>");
     } else if (nowtime != time) {
         client.channels.cache.get('897144218571653150').send(randomArray("pings.json", "pings"));
