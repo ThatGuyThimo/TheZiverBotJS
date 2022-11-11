@@ -1,4 +1,4 @@
-const Command = require("../Structures/Command.js");
+const SlashCommand = require("../Structures/SlashCommand.js");
 
 const { getChannel } = require("../Classes/youtube.js");
 
@@ -6,7 +6,7 @@ const config = require("../Data/config.json");
 
 const Discord = require("discord.js");
 
-module.exports = new Command({
+module.exports = new SlashCommand({
     name: "channel",
     description: "gives info on <@186113462584344577>",
 
