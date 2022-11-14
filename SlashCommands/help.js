@@ -22,42 +22,42 @@ module.exports = new SlashCommand({
             .setTimestamp(message.createdTimestamp)
             .addFields(
                 {
-                    name: `${config.prefix}about`,
+                    name: `/about`,
                     value: `gives info about ${client.user.username}`,
                     inline: false
                 },
                 {
-                    name: `${config.prefix}help`,
+                    name: `/help`,
                     value: `gives info about ${client.user.username} text commands`,
                     inline: false
                 },
                 {
-                    name: `${config.prefix}voicehelp`,
+                    name: `/voicehelp`,
                     value: `gives info about ${client.user.username} voice commands`,
                     inline: false
                 },
                 {
-                    name: `${config.prefix}hello`,
+                    name: `/hello`,
                     value: "to get a hello message",
                     inline: false
                 },
                 {
-                    name: `${config.prefix}fish`,
+                    name: `/fish`,
                     value: "for fish gifs",
                     inline: false
                 },
                 {
-                    name: `${config.prefix}spin`,
+                    name: `/spin`,
                     value: "for spinny gifs",
                     inline: false
                 },
                 {
-                    name: `${config.prefix}ping`,
+                    name: `/ping`,
                     value: "pings ziver in <#897144218571653150>",
                     inline: false
                 },
                 {
-                    name: `${config.prefix}schedule`,
+                    name: `/schedule`,
                     value: "for zivers upload schedule",
                     inline: false
                 },
