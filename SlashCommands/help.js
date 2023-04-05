@@ -9,18 +9,18 @@ module.exports = new SlashCommand({
     description: "Shows info about commands",
     async run(message, args, client) {
 
-        const embed = new Discord.MessageEmbed();
+        const embed = new Discord.EmbedBuilder()
 
-        embed.setTitle(`${client.user.username} help`)
-            .setAuthor(
-                message.user.username,
-                message.user.avatarURL()
-            )
+            .setTitle(`${client.user.username} help`)
+            .setAuthor({
+                name : message.user.tag,
+                iconURL : message.user.avatarURL()
+            })
             .setDescription(`Information and usage of ${client.user.username}`)
-            .setColor("GREEN")
+            .setColor(config.color)
             .setThumbnail(client.user.avatarURL({ dynamic: true }))
             .setTimestamp(message.createdTimestamp)
-            .addFields(
+            .addFields([
                 {
                     name: `/about`,
                     value: `gives info about ${client.user.username}`,
@@ -61,7 +61,7 @@ module.exports = new SlashCommand({
                     value: "for zivers upload schedule",
                     inline: false
                 },
-            );
+            ]);
 
         // message.channel.send({ embeds: [embed] });
         message.reply({ embeds: [embed] });

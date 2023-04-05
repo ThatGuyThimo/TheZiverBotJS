@@ -9,64 +9,65 @@ module.exports = new SlashCommand({
     description: "Shows info about commands",
     async run(message, args, client) {
 
-        const embed = new Discord.MessageEmbed();
+        const embed = new Discord.EmbedBuilder()
 
-        embed.setTitle(`${client.user.username} voicehelp`)
-            .setAuthor(
-                message.user.username,
-                message.user.avatarURL()
-            )
+            .setTitle(`${client.user.username} voicehelp`)
+            .setAuthor({
+                name : message.user.tag,
+                iconURL : message.user.avatarURL()
+            })
             .setDescription(`Information and usage of ${client.user.username} voice commands`)
-            .setColor("GREEN")
+            .setColor(config.color)
             .setThumbnail(client.user.avatarURL({ dynamic: true }))
             .setTimestamp(message.createdTimestamp)
-            .setFooter("YOU HAVE TO BE IN A VOICE CHANNEL TO USE THESE COMMANDS")
-            .addFields(
+            .setFooter({ text: "YOU HAVE TO BE IN A VOICE CHANNEL TO USE THESE COMMANDS"})
+            .addFields([
                 {
-                    name: `${config.prefix}intro`,
+                    name: `/intro`,
                     value: `${client.user.username} introduction`,
                     inline: false
                 },
                 {
-                    name: `${config.prefix}cheese`,
+                    name: `/cheese`,
                     value: "plays cheese sound",
                     inline: false
                 },
                 {
-                    name: `${config.prefix}burp`,
+                    name: `/burp`,
                     value: "plays burp sound",
                     inline: false
                 },
                 {
-                    name: `${config.prefix}sticky`,
+                    name: `/sticky`,
                     value: "plays sticky keys sound",
                     inline: false
                 },
                 {
-                    name: `${config.prefix}cabbagecat`,
+                    name: `/cabbagecat`,
                     value: "plays cabbagecat sounds",
                     inline: false
                 },
                 {
-                    name: `${config.prefix}beans`,
+                    name: `/beans`,
                     value: "plays beans sound",
                     inline: false
                 },
                 {
-                    name: `${config.prefix}dice`,
+                    name: `/dice`,
                     value: "gets random dice number",
                     inline: false
                 },
                 {
-                    name: `${config.prefix}bassdrop`,
+                    name: `/bassdrop`,
                     value: "plays bassdrop",
                     inline: false
                 },
                 {
-                    name: `${config.prefix}dinosaur`,
+                    name: `/dinosaur`,
                     value: "plays dinosaur",
                     inline: false
                 },
+            ]
             );
 
         // message.channel.send({ embeds: [embed] });

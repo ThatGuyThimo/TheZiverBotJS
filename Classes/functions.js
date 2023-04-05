@@ -35,7 +35,7 @@ function parsejson(array) {
  * 
  * @param {Discord.Client} client  
  */
-function intervalPing(client) {
+async function intervalPing(client) {
 
     let nowtime = new Date().getHours();
 
@@ -43,9 +43,11 @@ function intervalPing(client) {
     let todayMonth = new Date().getMonth();
 
     if (todayDay == 7 && todayMonth == 6 && nowtime != time) {
+        await client.channels.fetch('897144218571653150')
         client.channels.cache.get('897144218571653150').send("***HAPPY BIRTHDAY*** <@186113462584344577> <:tada:994438381314506822> <:confetti_ball:994439911228846120>");
         time = nowtime;
     } else if (nowtime != time) {
+        await client.channels.fetch('897144218571653150')
         client.channels.cache.get('897144218571653150').send(randomArray("pings.json", "pings"));
         time = nowtime;
     }

@@ -9,7 +9,6 @@ module.exports = new SlashCommand({
     
     async run(message, args, client) {
         message.reply(randomArray("fish.json","gifs"));
-        message.reply("playing fish");
     }
 
 });

@@ -13,18 +13,18 @@ module.exports = new SlashCommand({
     async run(message, args, client) {
         getChannel(config['api_key']);
 
-        const embed = new Discord.MessageEmbed();
+        const embed = new Discord.EmbedBuilder()
 
-        embed.setTitle(`Channel`)
-            .setAuthor(
-                message.author.username,
-                message.author.avatarURL({ dynamic: true })
-            )
+        .setTitle(`Channel`)
+        .setAuthor({
+            name : message.user.tag,
+            iconURL : message.user.avatarURL()
+        })
             .setDescription(`Channel Information`)
-            .setColor("GREEN")
+            .setColor(config.color)
             .setThumbnail('https://cdn.discordapp.com/attachments/793311822555512873/897081743012663336/ziver_discord_picture-1.gif')
             .setTimestamp(message.createdTimestamp)
-            .addFields(
+            .addFields([
                 {
                     name: "Subscrubercount",
                     value: `${subcount}`,
@@ -40,6 +40,7 @@ module.exports = new SlashCommand({
                     value: `${viewCount}`,
                     inline: false
                 },
+            ]
             );
 
         message.channel.send({ embeds: [embed] });
