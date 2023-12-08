@@ -23,6 +23,11 @@ module.exports = new SlashCommand({
             .setFooter({ text: "YOU HAVE TO BE IN A VOICE CHANNEL TO USE THESE COMMANDS"})
             .addFields([
                 {
+                    name: `/voicedc`,
+                    value: "disconnects the bot from voice channel",
+                    inline: false
+                },
+                {
                     name: `/intro`,
                     value: `${client.user.username} introduction`,
                     inline: false
@@ -69,7 +74,7 @@ module.exports = new SlashCommand({
                 },
                 {
                     name: `/huh`,
-                    value: "plays hallmusic",
+                    value: "plays hallmusic made by <@!161297999182430209>",
                     inline: false
                 },
             ]

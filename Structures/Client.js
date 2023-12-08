@@ -89,9 +89,10 @@ class Client extends Discord.Client {
             console.log('Started refreshing application (/) commands.');
                 
 
-            if(true) {
-                await rest.put(Routes.applicationCommands(config.clientId, config.guildId), { body: slashCommands });
-                await rest.put(Routes.applicationGuildCommands(config.clientId, config.guildId), { body: [] });
+            if(false) {
+                // await rest.put(Routes.applicationCommands(config.clientId, config.guildId), { body: slashCommands });
+                // await rest.put(Routes.applicationGuildCommands(config.clientId, config.guildId), { body: slashCommands });
+                // await rest.put(Routes.applicationGuildCommands(config.clientId, config.guildId), { body: [] });
                 console.log('Successfully reloaded application (/) commands.');
             }
             } catch (error) {

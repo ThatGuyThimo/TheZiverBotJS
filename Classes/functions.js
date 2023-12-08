@@ -3,6 +3,8 @@ const fs = require('fs');
 const voiceDiscord = require('@discordjs/voice');
 
 let time = new Date().getHours();
+const player = voiceDiscord.createAudioPlayer();
+let connection = null
 
 /**
  * 
@@ -59,26 +61,50 @@ async function intervalPing(client) {
  * @param {Discord.Client.message} message 
  */
 function playAudio(source, message) {
+    try {
+        const channel = message.member.voice.channel;
+        if (!channel) {
+            message.reply('Join a voice channel to use this command');
+        } else {
+            if(connection != null) {
+                connection.destroy();
+            }
+    
+            // const player = voiceDiscord.createAudioPlayer();
+            const resource = voiceDiscord.createAudioResource(`./audio/${source}`);
+    
+            connection = voiceDiscord.joinVoiceChannel({
+                channelId: channel.id,
+                guildId: message.guild.id,
+                adapterCreator: message.guild.voiceAdapterCreator
+            });
+            player.play(resource);
+            connection.subscribe(player);
+    
+
+            player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
+                connection.destroy();
+                connection = null
+            })
+        }
+    } catch (e) {
+        console.error(e)
+    }
+}
+/**
+ * 
+ * @param {Discord.Client.message} message 
+ */
+function stopAudio(message) {
     const channel = message.member.voice.channel;
     if (!channel) {
         message.reply('Join a voice channel to use this command');
     } else {
-
-        const player = voiceDiscord.createAudioPlayer();
-        const resource = voiceDiscord.createAudioResource(`./audio/${source}`);
-
-        const connection = voiceDiscord.joinVoiceChannel({
-            channelId: channel.id,
-            guildId: message.guild.id,
-            adapterCreator: message.guild.voiceAdapterCreator
-        });
-        player.play(resource);
-        connection.subscribe(player);
-
-        player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
+        if(connection != null) {
             connection.destroy();
-        })
+            connection = null
+        }
     }
 }
 
-module.exports = { randomArray, intervalPing, playAudio, parsejson };
+module.exports = { stopAudio, randomArray, intervalPing, playAudio, parsejson };
