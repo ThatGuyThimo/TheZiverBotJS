@@ -91,7 +91,7 @@ class Client extends Discord.Client {
 
             if(false) {
                 await rest.put(Routes.applicationCommands(config.clientId, config.guildId), { body: slashCommands });
-            
+                // await rest.put(Routes.applicationGuildCommands(config.clientId, config.guildId), { body: slashCommands });
                 console.log('Successfully reloaded application (/) commands.');
             }
             } catch (error) {

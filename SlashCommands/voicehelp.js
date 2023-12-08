@@ -67,6 +67,11 @@ module.exports = new SlashCommand({
                     value: "plays dinosaur",
                     inline: false
                 },
+                {
+                    name: `/huh?`,
+                    value: "plays hallmusic",
+                    inline: false
+                },
             ]
             );
 
