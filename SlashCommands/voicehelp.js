@@ -68,7 +68,7 @@ module.exports = new SlashCommand({
                     inline: false
                 },
                 {
-                    name: `/huh?`,
+                    name: `/huh`,
                     value: "plays hallmusic",
                     inline: false
                 },
