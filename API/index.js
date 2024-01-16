@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => {
   let data = JSON.parse(fs.readFileSync("../Data/members.json"))
-  res.send(data.Zivergroup)
+  res.send(`${data.Zivergroup}`).status(200)
 })
 
 // app.use('/cars', carRoutes)
