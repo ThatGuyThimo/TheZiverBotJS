@@ -13,11 +13,11 @@ module.exports = new Event("ready",async client => {
     console.log(`Logged in as ${client.user.tag}`);
     client.user.setActivity("/help");
     setInterval(() => intervalPing(client), 60000);
-    setInterval(() =>{
-        groupMemberCount(config.groupIdtheziver, "Zivergroup")
-        groupMemberCount(config.groupIdonlyrusk, "Onlyruskgroup")
-        groupMemberCount(config.groupIdcheese, "Cheesegroup")
-        groupMemberCount(config.groupIdavifair, "Avifairgroup")
+    setInterval( async () => {
+        await groupMemberCount(config.groupIdtheziver, "Zivergroup")
+        await groupMemberCount(config.groupIdonlyrusk, "Onlyruskgroup")
+        await groupMemberCount(config.groupIdcheese, "Cheesegroup")
+        await groupMemberCount(config.groupIdavifair, "Avifairgroup")
     } , 300000);
     //300000
 });
