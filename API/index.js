@@ -31,7 +31,8 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-  res.json(JSON.parse(fs.readFileSync("../Data/members.json")))
+  let data = JSON.parse(fs.readFileSync("../Data/members.json"))
+  res.send(data.Zivergroup)
 })
 
 // app.use('/cars', carRoutes)
