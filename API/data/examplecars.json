@@ -1,0 +1,116 @@
+{
+  "brands": [
+    "Volvo",
+    "Audi",
+    "Holden",
+    "BMW",
+    "Fiat",
+    "Ferrari",
+    "Lamborghini",
+    "Toyota",
+    "Skoda",
+    "Seat"
+  ],
+  "cars": [
+    {
+      "brand": "Volvo",
+      "model": "XC60",
+      "year": 2022,
+      "color": "Silver",
+      "transmission": "Automatic",
+      "engine": "2.0L 4-cylinder",
+      "fuelType": "Petrol",
+      "price": 50000
+    },
+    {
+      "brand": "Audi",
+      "model": "A4",
+      "year": 2023,
+      "color": "Black",
+      "transmission": "Automatic",
+      "engine": "2.0L Turbocharged",
+      "fuelType": "Diesel",
+      "price": 55000
+    },
+    {
+      "brand": "Holden",
+      "model": "Commodore",
+      "year": 2022,
+      "color": "Blue",
+      "transmission": "Automatic",
+      "engine": "3.6L V6",
+      "fuelType": "Petrol",
+      "price": 48000
+    },
+    {
+      "brand": "BMW",
+      "model": "3 Series",
+      "year": 2023,
+      "color": "White",
+      "transmission": "Automatic",
+      "engine": "2.0L TwinPower Turbo",
+      "fuelType": "Petrol",
+      "price": 60000
+    },
+    {
+      "brand": "Fiat",
+      "model": "500",
+      "year": 2022,
+      "color": "Red",
+      "transmission": "Manual",
+      "engine": "1.4L MultiAir",
+      "fuelType": "Petrol",
+      "price": 25000
+    },
+    {
+      "brand": "Ferrari",
+      "model": "488 GTB",
+      "year": 2023,
+      "color": "Yellow",
+      "transmission": "Automatic",
+      "engine": "3.9L V8",
+      "fuelType": "Petrol",
+      "price": 300000
+    },
+    {
+      "brand": "Lamborghini",
+      "model": "Huracan",
+      "year": 2022,
+      "color": "Orange",
+      "transmission": "Automatic",
+      "engine": "5.2L V10",
+      "fuelType": "Petrol",
+      "price": 250000
+    },
+    {
+      "brand": "Toyota",
+      "model": "Camry",
+      "year": 2023,
+      "color": "Green",
+      "transmission": "Automatic",
+      "engine": "2.5L 4-cylinder",
+      "fuelType": "Hybrid",
+      "price": 35000
+    },
+    {
+      "brand": "Skoda",
+      "model": "Octavia",
+      "year": 2022,
+      "color": "Silver",
+      "transmission": "Automatic",
+      "engine": "1.5L TSI",
+      "fuelType": "Petrol",
+      "price": 30000
+    },
+    {
+      "brand": "Seat",
+      "model": "Leon",
+      "year": 2023,
+      "color": "Gray",
+      "transmission": "Automatic",
+      "engine": "1.5L TSI",
+      "fuelType": "Petrol",
+      "price": 28000
+    }
+  ]
+}

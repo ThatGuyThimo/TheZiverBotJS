@@ -1,0 +1,32 @@
+{
+  "name": "restfull-api",
+  "version": "1.0.0",
+  "description": "rest api for school",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThatGuyThimo/pro4-6.git"
+  },
+  "keywords": [
+    "api",
+    "rest",
+    "express"
+  ],
+  "author": "Thimo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ThatGuyThimo/pro4-6/issues"
+  },
+  "homepage": "https://github.com/ThatGuyThimo/pro4-6#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "mongoose": "^8.0.2"
+  }
+}
