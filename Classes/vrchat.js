@@ -15,6 +15,7 @@ const fs = require('fs');
 // const { dbInsert, dbFindAndDelete, dbFindAndBan, dbFindAndUnban, dbFind } = require("./mongo.js");
 const { logError } = require("./errorLogging.js");
 const { error } = require("console");
+const { json } = require("express");
 
 colors.enable()
 
@@ -195,21 +196,28 @@ connect(new Date)
 
 let state =  'offline';
 
-async function groupMemberCount() {
+async function groupMemberCount(groupId, groupname) {
     return new Promise((resolve, reject) => {
-        GroupApi.getGroup(config.groupId).then(resp => {
-            fs.open("./Data/members.json", 'w', function (error) {
+        GroupApi.getGroup(groupId).then(resp => {
+            let fdNumber
+            fs.open("./Data/members.json", 'w', function (error, fd) {
                 if (error) {
                     console.log(error)
                     reject(error)
                 }
+                fdNumber = fd
             })
+
+            membersjson = JSON.parse(fs.readFileSync("./Data/members.json", "utf-8"))
+
+            membersjson[groupname] = resp.data.memberCount
             
-            fs.writeFile("./Data/members.json", JSON.stringify({"Zivergroup": resp.data.memberCount}), function (error) {
+            fs.writeFile("./Data/members.json", JSON.stringify(membersjson), function (error) {
                 if (error) {
                     console.log(error)
                     reject(error)
                 }
+                fs.close(fdNumber)
             })
             resolve(resp.data.memberCount)
         }).catch(async function (error) {

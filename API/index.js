@@ -6,6 +6,9 @@ import 'dotenv/config';
 // import {router as carRoutes} from './routes/carsRoute.js';
 // import {router as userRouter} from './routes/usersRoute.js'
 
+import { router as onlyrusk } from './routes/onlyrusk.js'
+import { router as theziver } from './routes/theziver.js'
+
 const app = express()
 const httpPort = process.env.HTTPPORT
 const httpsPort = process.env.HTTPSPORT
@@ -23,20 +26,22 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-  if( req.headers?.accept === "application/json") {
+  // if( req.headers?.accept === "application/json") {
     next()
-  } else {
-    res.status(400).send("Bad Headers!")
-  }
+  // } else {
+    // res.status(400).send("Bad Headers!")
+  // }
 })
 
-app.get('/', (req, res) => {
-  let data = JSON.parse(fs.readFileSync("../Data/members.json"))
-  res.send(`${data.Zivergroup}`).status(200)
-})
+// app.get('/', (req, res) => {
+//   let data = JSON.parse(fs.readFileSync("../Data/members.json"))
+//   res.send(`${data.Zivergroup}`).status(200)
+// })
 
 // app.use('/cars', carRoutes)
 // app.use('/users', userRouter)
+app.use('/onlyrusk', onlyrusk)
+app.use('/theziver', theziver)
 
 app.listen(httpPort, () => {
   console.log(`Http listening on port ${httpPort}`)
