@@ -14,8 +14,6 @@ const fs = require('fs');
 
 // const { dbInsert, dbFindAndDelete, dbFindAndBan, dbFindAndUnban, dbFind } = require("./mongo.js");
 const { logError } = require("./errorLogging.js");
-const { error } = require("console");
-const { json } = require("express");
 
 colors.enable()
 
