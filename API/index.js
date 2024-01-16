@@ -8,6 +8,8 @@ import 'dotenv/config';
 
 import { router as onlyrusk } from './routes/onlyrusk.js'
 import { router as theziver } from './routes/theziver.js'
+import { router as avifair } from './routes/avifair.js'
+import { router as cheese } from './routes/cheese.js'
 
 const app = express()
 const httpPort = process.env.HTTPPORT
@@ -42,6 +44,8 @@ app.use((req, res, next) => {
 // app.use('/users', userRouter)
 app.use('/onlyrusk', onlyrusk)
 app.use('/theziver', theziver)
+app.use('/avifair', avifair)
+app.use('/cheese', cheese)
 
 app.listen(httpPort, () => {
   console.log(`Http listening on port ${httpPort}`)

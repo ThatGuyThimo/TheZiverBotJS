@@ -16,6 +16,8 @@ module.exports = new Event("ready",async client => {
     setInterval(() =>{
         groupMemberCount(config.groupIdtheziver, "Zivergroup")
         groupMemberCount(config.groupIdonlyrusk, "Onlyruskgroup")
+        groupMemberCount(config.groupIdcheese, "Cheesegroup")
+        groupMemberCount(config.groupIdavifair, "Avifairgroup")
     } , 300000);
     //300000
 });
