@@ -196,34 +196,31 @@ let state =  'offline';
 
 async function groupMemberCount(groupId, groupname) {
     return new Promise((resolve, reject) => {
-        GroupApi.getGroup(groupId).then(resp => {
-            let fdNumber
-            fs.open("./Data/members.json", 'w', function (error, fd) {
-                if (error) {
-                    console.log(error)
-                    reject(error)
-                }
-                fdNumber = fd
-            })
-
-            membersjson = JSON.parse(fs.readFileSync("./Data/members.json", "utf-8"))
-
-            membersjson[groupname] = resp.data.memberCount
-            
-            fs.writeFile("./Data/members.json", JSON.stringify(membersjson), function (error) {
-                if (error) {
-                    console.log(error)
-                    reject(error)
-                }
-                fs.close(fdNumber)
-            })
-            resolve(resp.data.memberCount)
+        GroupApi.getGroup(groupId).then( resp => {
+            try {                
+                let membersjson = JSON.parse(fs.readFileSync("./Data/members.json", "utf-8"))
+                membersjson[groupname] = resp.data.memberCount
+                writeMemberCount(membersjson)
+                resolve(resp.data.memberCount)
+                
+            } catch (error) {
+                logError(error), "groupMemberCount".underline.red
+                reject(error)
+            }  
         }).catch(async function (error) {
             console.warn(await logError(error), "groupMemberCount".underline.red)
             reject(error)
         })
     })
+}
 
+async function writeMemberCount(membersjson) {
+    fs.writeFile("./Data/members.json", JSON.stringify(membersjson), function (error) {
+        if (error) {
+            console.log(error)
+            reject(error)
+        }
+    })
 }
 
 /**
