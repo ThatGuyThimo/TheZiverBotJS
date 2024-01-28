@@ -101,7 +101,7 @@ function storeToken(token) {
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
 function getChannel(auth) {
-    var service = google.youtube('v3');
+    const service = google.youtube('v3');
     service.channels.list({
         auth: auth,
         part: 'statistics',
@@ -111,13 +111,15 @@ function getChannel(auth) {
             console.log('The API returned an error: ' + err);
             return;
         }
-        var channels = response.data.items;
+        const channels = response.data.items;
         if (channels.length == 0) {
             console.log('No channel found.');
         } else {
-            subcount = channels[0].statistics.subscriberCount;
-            videoCount = channels[0].statistics.videoCount;
-            viewCount = channels[0].statistics.viewCount;
+            data = []
+            data["subcount"] = channels[0].statistics.subscriberCount;
+            data["videoCount"] = channels[0].statistics.videoCount;
+            data["viewCount"] = channels[0].statistics.viewCount;
+            return data
         }
     });
 }

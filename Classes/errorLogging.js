@@ -22,12 +22,13 @@ async function _createloggingFolder() {
 /**
  * 
  * @param {error} value 
+ * @param {String} name 
  * @returns string (file name)
  */
-async function logError(value) {
+async function logError(value, name) {
     return new Promise(async function (resolve, reject) {        
         let date = new Date
-        let fileName = `${date.getDay()}-${date.getMonth()}-${date.getFullYear()}-h${date.getHours()}-m${date.getMinutes()}-s${date.getSeconds()}`
+        let fileName = `${name}-${date.getDay()}-${date.getMonth()}-${date.getFullYear()}-h${date.getHours()}-m${date.getMinutes()}-s${date.getSeconds()}-rn${Math.random()}`
         if (await _createloggingFolder()) {
             fs.open(`${config.loggingDir}errorLogs/${fileName}.txt`, 'w', function (error) {
                 if (error) {
@@ -49,12 +50,14 @@ async function logError(value) {
 /**
  * 
  * @param {Discord client} client 
+ * @param {Discord message} message 
+ * @param {String} command 
  * @param {String} error 
  */
 async function sendErrorDC(client, message, command, error) {
     try {
-        await client.channels.fetch('915811391653429258')
-        botErrors = await client.channels.cache.get('915811391653429258')
+        await client.channels.fetch(config.loggingChannel)
+        botErrors = await client.channels.cache.get(config.loggingChannel)
 
         const embed = new Discord.EmbedBuilder()
 
@@ -68,7 +71,7 @@ async function sendErrorDC(client, message, command, error) {
         .addFields([
             {
                 name: "Bot Version",
-                value: "0.1.3",
+                value: config.botVersion,
                 inline: false
             },
             {
@@ -88,8 +91,53 @@ async function sendErrorDC(client, message, command, error) {
             },
         ]);
         botErrors.send({ embeds: [embed] });
-} catch {
-    console.log('something went wrong with sendErrorDC')
+    } catch(error) {
+        console.log(error)
+        console.log('something went wrong with sendErrorDC')
+    }
+}
+
+/**
+ * 
+ * @param {Discord client} client 
+ * @param {String} functionName 
+ * @param {String} error 
+ */
+async function sendServerErrorDC(client, functionName, error) {
+    try {
+        await client.channels.fetch(config.loggingChannel)
+        botErrors = await client.channels.cache.get(config.loggingChannel)
+
+        const embed = new Discord.EmbedBuilder()
+
+        .setTitle(`SERVER ERROR LOG`)
+        .setAuthor({
+            name : client.user.tag,
+            iconURL : client.user.avatarURL()
+        })
+        .setColor("FF0000")
+        .setTimestamp()
+        .addFields([
+            {
+                name: "Bot Version",
+                value: config.botVersion,
+                inline: false
+            },
+            {
+                name: "Function",
+                value: `${functionName}`,
+                inline: false
+            },
+            {
+                name: "Error",
+                value: "```js\n" + error + "```",
+                inline: false
+            },
+        ]);
+        botErrors.send({ embeds: [embed] });
+} catch(error) {
+    console.log(error)
+    console.log('something went wrong with sendServerErrorDC')
 }
 }
-module.exports = {logError, sendErrorDC}
+module.exports = {logError, sendErrorDC, sendServerErrorDC}

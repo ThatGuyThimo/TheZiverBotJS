@@ -16,9 +16,13 @@ const config = require("../Data/config.json");
 
 const intents = new Discord.IntentsBitField(641);
 
+const colors = require('colors');
+
 const fs = require("fs");
 
 let slashCommands = []
+
+colors.enable();
 
 
 class Client extends Discord.Client {
@@ -86,17 +90,17 @@ class Client extends Discord.Client {
   
         (async () => {
             try {
-            console.log('Started refreshing application (/) commands.');
                 
-
-            if(false) {
+                
+                if(false) {
+                console.log('Started refreshing application (/) commands.'.blue);
                 // await rest.put(Routes.applicationCommands(config.clientId, config.guildId), { body: slashCommands });
                 // await rest.put(Routes.applicationGuildCommands(config.clientId, config.guildId), { body: slashCommands });
                 // await rest.put(Routes.applicationGuildCommands(config.clientId, config.guildId), { body: [] });
-                console.log('Successfully reloaded application (/) commands.');
+                console.log('Successfully reloaded application (/) commands.'.green);
             }
             } catch (error) {
-            console.error(error);
+            console.error(error + "Refreshing commands".underline.red);
             }
         })();
 

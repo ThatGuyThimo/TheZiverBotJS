@@ -1,16 +1,28 @@
 const Event = require("../Structures/Event.js");
 
-const config = require("../Data/config.json");;
+const config = require("../Data/config.json");
+
+const colors = require('colors');
 
 const { intervalPing } = require("../Classes/functions.js");
 
-const { groupMemberCount } = require("../Classes/vrchat.js");
+const { groupMemberCount, connect } = require("../Classes/vrchat.js");
+
+const { sendServerErrorDC } = require("../Classes/errorLogging.js");
 
 // const connection = require("../Classes/database.js");
 
+colors.enable();
 
 module.exports = new Event("ready",async client => {
-    console.log(`Logged in as ${client.user.tag}`);
+    try {
+    await connect(new Date)
+    } catch (error) {
+        sendServerErrorDC(client, "connect", error)
+        await connect(new Date)
+    }
+
+    console.log(`Discord logged in as ${client.user.tag}`.cyan);
     client.user.setActivity("/help");
     setInterval(() => intervalPing(client), 60000);
     setInterval( async () => {
@@ -19,9 +31,9 @@ module.exports = new Event("ready",async client => {
         await groupMemberCount(config.groupIdcheese, "Cheesegroup")
         await groupMemberCount(config.groupIdavifair, "Avifairgroup")
     } , 300000);
-    await groupMemberCount(config.groupIdtheziver, "Zivergroup")
-    await groupMemberCount(config.groupIdonlyrusk, "Onlyruskgroup")
-    await groupMemberCount(config.groupIdcheese, "Cheesegroup")
-    await groupMemberCount(config.groupIdavifair, "Avifairgroup")
+    // await groupMemberCount(config.groupIdtheziver, "Zivergroup")
+    // await groupMemberCount(config.groupIdonlyrusk, "Onlyruskgroup")
+    // await groupMemberCount(config.groupIdcheese, "Cheesegroup")
+    // await groupMemberCount(config.groupIdavifair, "Avifairgroup")
     //300000
 });

@@ -33,6 +33,8 @@ let UsersApi = null
 let WorldApi = null
 let GroupApi = null
 let AuthenticationApi = null
+let CookieExpirationDate = null
+let TwoAuthCookieExpirationDate = null
 
 
 async function logout() {
@@ -54,12 +56,35 @@ async function connect (now) {
             }
     
             let auth_token = null
+            let two_auth_token = null
     
             let cookies = fs.readFileSync("./Data/cookies.json", "utf-8");
             if (cookies !== "") {
                 axios.defaults.jar = tough.CookieJar.fromJSON(JSON.parse(cookies));
                 cookies = JSON.parse(cookies)
-                auth_token = cookies.cookies[1].value
+                cookies.cookies.forEach(cookie => {                    
+                    if (cookie.expires && cookie.key == "auth") {
+                        CookieExpirationDate = new Date(cookie.expires);
+                        // console.log(CookieExpirationDate, new Date())
+                        if (CookieExpirationDate < new Date()) {
+                            console.log('Auth cookie has expired'.yellow);
+                            auth_token = null
+                        } else {
+                            console.log('Auth cookie has not expired'.green);
+                            auth_token = cookie.value
+                        }
+                    } else if(cookie.expires && cookie.key == "twoFactorAuth") {
+                        TwoAuthCookieExpirationDate = new Date(cookie.expires);
+                        // console.log(TwoAuthCookieExpirationDate, new Date())
+                        if (TwoAuthCookieExpirationDate < new Date()) {
+                            console.log('TwoAuth cookie has expired'.yellow);
+                            two_auth_token = null
+                        } else {
+                            console.log('TwoAuth Cookie has not expired'.green);
+                            two_auth_token = cookie.value
+                        }   
+                    }
+                });
             }
     
             let axiosConfig = axios.create({
@@ -72,7 +97,8 @@ async function connect (now) {
             AuthenticationApi = new vrchat.AuthenticationApi(configuration, undefined, axiosConfig);
     
             let session = false;
-            if(auth_token != null && !loggedin){
+            if(auth_token != null && two_auth_token != null && !loggedin){
+                console.log()
                 await AuthenticationApi.verifyAuthToken({data: `auth=${auth_token}`}).then(resp => {
                     session = resp.data.ok;
                 }).catch(error => {
@@ -95,16 +121,20 @@ async function connect (now) {
     
                 AuthenticationApi.getCurrentUser(axiosConfig).then(async resp => {
                     if(resp?.error ){
-                        console.log(await logError(resp?.error));
-                        reject('Something went wrong with the connection!. resp?.error')
+                        console.log(await logError(resp?.error, "getCurrentUser"));
+                        reject('Something went wrong with the connection!.')
                     } else {
                         console.log('authToken Valid!'.green);
-                        console.log(`VRchat logged in as: ${resp.data.displayName}`.green);
+                        console.log(`VRchat logged in as: ${resp.data.displayName}`.cyan);
                         loggedin = true
                         resolve("logged in!")
                     }
                     
+                }).catch(async error => {
+                    console.warn(await logError(error, "getCurrentUser"), "getCurrentUser".underline.red)
+                    reject('Something went wrong with the connection!. getCurrentUser')
                 })
+
             } else {
                 console.log('Attempting login'.blue)
                 
@@ -124,7 +154,7 @@ async function connect (now) {
                         await AuthenticationApi.verify2FA({ code: token }).then( resp => {
                             console.log(`Verified: ${resp.data.verified}`.blue);
                         }).catch(async error => {
-                            console.warn(await logError(error), "verify2FA".underline.red)
+                            console.warn(await logError(error, "verify2FA"), "verify2FA".underline.red)
                             reject('Something went wrong with the connection. verify2FA')
                         }) 
                 
@@ -168,28 +198,28 @@ async function connect (now) {
                         GroupApi = new vrchat.GroupsApi(configuration, undefined, newAxiosConfig);
                     }
                     if (currentUser?.error) {
-                        reject('Something went wrong with the connection. currentUser')
+                        reject('Something went wrong with the connection. currentUser TwoAuth')
                     } else {
                         loggedin = true
-                        console.log(`VRchat logged in as: ${currentUser.data.displayName}`.green);
+                        console.log(`VRchat logged in as: ${currentUser.data.displayName}`.cyan);
                         resolve("logged in!")
                     }
-                
+
                 }).catch( async error => {
-                    console.warn(await logError(error), "getCurrentUser".underline.red)
-                    reject("'Something went wrong with the connection. getCurrentUser")
+                    console.warn(await logError(error,"getCurrentUser TwoAuth"), "getCurrentUser TwoAuth".underline.red)
+                    reject("'Something went wrong with the connection. getCurrentUser TwoAuth")
                 })
         
                 lastTime = now
             }
         } catch(error) {
-            console.warn(await logError(error), "connect".underline.red)
+            console.warn(await logError(error, "connect"), "connect".underline.red)
             reject('Something went wrong with the connection. catch')
         }
     });
 }
 
-connect(new Date)
+// connect(new Date)
 // .catch( async error => ( console.warn(await logError(error), "Unhandled Connect".underline.red)));
 
 let state =  'offline';
@@ -204,11 +234,11 @@ async function groupMemberCount(groupId, groupname) {
                 resolve(resp.data.memberCount)
                 
             } catch (error) {
-                logError(error), "groupMemberCount".underline.red
+                logError(error, "groupMemberCount"), "groupMemberCount".underline.red
                 reject(error)
             }  
         }).catch(async function (error) {
-            console.warn(await logError(error), "groupMemberCount".underline.red)
+            console.warn(await logError(error, "groupMemberCount"), "groupMemberCount".underline.red)
             reject(error)
         })
     })
@@ -563,4 +593,4 @@ async function sendPing(state, client) {
     }
 }
 
-module.exports = { online, onlineping, getWorld, getInstance, joinGroup, banUser, unbanUser, logout, groupMemberCount }
+module.exports = { connect, online, onlineping, getWorld, getInstance, joinGroup, banUser, unbanUser, logout, groupMemberCount }

@@ -1,6 +1,6 @@
 {
   "name": "ziverbot",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "The ziver bot js version",
   "main": "main.js",
   "scripts": {
