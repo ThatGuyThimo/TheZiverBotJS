@@ -31,9 +31,9 @@ module.exports = new Event("ready",async client => {
         await groupMemberCount(config.groupIdcheese, "Cheesegroup")
         await groupMemberCount(config.groupIdavifair, "Avifairgroup")
     } , 300000);
-    // await groupMemberCount(config.groupIdtheziver, "Zivergroup")
-    // await groupMemberCount(config.groupIdonlyrusk, "Onlyruskgroup")
-    // await groupMemberCount(config.groupIdcheese, "Cheesegroup")
-    // await groupMemberCount(config.groupIdavifair, "Avifairgroup")
+    await groupMemberCount(config.groupIdtheziver, "Zivergroup")
+    await groupMemberCount(config.groupIdonlyrusk, "Onlyruskgroup")
+    await groupMemberCount(config.groupIdcheese, "Cheesegroup")
+    await groupMemberCount(config.groupIdavifair, "Avifairgroup")
     //300000
 });
