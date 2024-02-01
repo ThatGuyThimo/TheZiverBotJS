@@ -25,15 +25,20 @@ module.exports = new Event("ready",async client => {
     console.log(`Discord logged in as ${client.user.tag}`.cyan);
     client.user.setActivity("/help");
     setInterval(() => intervalPing(client), 60000);
-    setInterval( async () => {
+    try {
+        setInterval( async () => {
+            await groupMemberCount(config.groupIdtheziver, "Zivergroup")
+            await groupMemberCount(config.groupIdonlyrusk, "Onlyruskgroup")
+            await groupMemberCount(config.groupIdcheese, "Cheesegroup")
+            await groupMemberCount(config.groupIdavifair, "Avifairgroup")
+        } , 300000);
         await groupMemberCount(config.groupIdtheziver, "Zivergroup")
         await groupMemberCount(config.groupIdonlyrusk, "Onlyruskgroup")
         await groupMemberCount(config.groupIdcheese, "Cheesegroup")
         await groupMemberCount(config.groupIdavifair, "Avifairgroup")
-    } , 300000);
-    await groupMemberCount(config.groupIdtheziver, "Zivergroup")
-    await groupMemberCount(config.groupIdonlyrusk, "Onlyruskgroup")
-    await groupMemberCount(config.groupIdcheese, "Cheesegroup")
-    await groupMemberCount(config.groupIdavifair, "Avifairgroup")
-    //300000
+        //300000
+    } catch (error) {
+        sendServerErrorDC(client, "connect", error)
+        await connect(new Date)
+    }
 });
