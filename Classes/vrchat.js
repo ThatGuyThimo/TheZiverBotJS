@@ -252,6 +252,25 @@ async function writeMemberCount(membersjson) {
         }
     })
 }
+ 
+async function getAllMemberCounts() {
+    try {
+        setInterval( async () => {
+            await groupMemberCount(config.groupIdtheziver, "Zivergroup")
+            await groupMemberCount(config.groupIdonlyrusk, "Onlyruskgroup")
+            await groupMemberCount(config.groupIdcheese, "Cheesegroup")
+            await groupMemberCount(config.groupIdavifair, "Avifairgroup")
+        } , 300000);
+        await groupMemberCount(config.groupIdtheziver, "Zivergroup")
+        await groupMemberCount(config.groupIdonlyrusk, "Onlyruskgroup")
+        await groupMemberCount(config.groupIdcheese, "Cheesegroup")
+        await groupMemberCount(config.groupIdavifair, "Avifairgroup")
+        //300000
+    } catch (error) {
+        sendServerErrorDC(client, "connect", error)
+        await connect(new Date)
+    }
+} 
 
 /**
  * 
