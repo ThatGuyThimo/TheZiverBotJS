@@ -42,6 +42,7 @@ module.exports = new Event("ready",async client => {
         await groupMemberCount(config.groupIdportalmedia, "Portalgroup")
         //300000
     } catch (error) {
+        console.log("something went wrong with groupMemberCount")
         sendServerErrorDC(client, "connect", error)
         await connect(new Date)
     }
