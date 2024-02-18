@@ -21,6 +21,14 @@ The bot running in the Discord is the JavaScript version as of Thursday 2 Decemb
 ## Documentation
 Comming soon.
 
+### Chat commands
+
+- /about (Gives info about the Bot)
+- /help (Gives info on all the available commands)
+- /channel (Gives info about the [@TheZiver](https://www.youtube.com/@TheZiver) Youtube channel)
+- /fish (Sends a random fish gif)
+- 
+
 ---
 ## Contributors
 
