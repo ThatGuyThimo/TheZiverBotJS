@@ -81,6 +81,18 @@ module.exports = new SlashCommand({
 });
 ```
 
+## How to run the bot
+1. first make sure you have Node installed, if not you can download it from [here](https://nodejs.org/en) and create a bot at the [Discord developer portal](https://discord.com/developers/applications).
+
+2. Install the required packages by running the following command inside of the folder
+    ```cli
+    npm install
+    ```
+3. Create a file inside the Data folder called cookies.json and leave it empty
+4. Create and populate the config.json in the Data folder (an example has been provided)
+   ![image](/MD/Images/Example-config.jpg)
+5. Run the bot with ```node main.js```
+
 ---
 ## Default ussage
 ### Chat commands
