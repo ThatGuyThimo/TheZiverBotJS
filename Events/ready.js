@@ -21,29 +21,35 @@ module.exports = new Event("ready",async client => {
         sendServerErrorDC(client, "connect", error)
         await connect(new Date)
     }
-
+    // sendServerErrorDC(client, "Testing", "test error message")
     console.log(`Discord logged in as ${client.user.tag}`.cyan);
     client.user.setActivity("/help");
     setInterval(() => intervalPing(client), 60000);
-    try {
+    // try {
         setInterval( async () => {
-            await groupMemberCount(config.groupIdtheziver, "Zivergroup")
-            await groupMemberCount(config.groupIdonlyrusk, "Onlyruskgroup")
-            await groupMemberCount(config.groupIdcheese, "Cheesegroup")
-            await groupMemberCount(config.groupIdavifair, "Avifairgroup")
-            await groupMemberCount(config.groupIdfamily, "Familygroup")
-            await groupMemberCount(config.groupIdportalmedia, "Portalgroup")
+            try {
+                await groupMemberCount(client, config.groupIdtheziver, "Zivergroup")
+                await groupMemberCount(client, config.groupIdonlyrusk, "Onlyruskgroup")
+                await groupMemberCount(client, config.groupIdcheese, "Cheesegroup")
+                await groupMemberCount(client, config.groupIdavifair, "Avifairgroup")
+                await groupMemberCount(client, config.groupIdfamily, "Familygroup")
+                await groupMemberCount(client, config.groupIdportalmedia, "Portalgroup")
+            } catch (error) {
+                console.log("something went wrong with groupMemberCount Event")
+                sendServerErrorDC(client, "groupMemberCount", error)
+                await connect(new Date)
+            }
         } , 300000);
-        await groupMemberCount(config.groupIdtheziver, "Zivergroup")
-        await groupMemberCount(config.groupIdonlyrusk, "Onlyruskgroup")
-        await groupMemberCount(config.groupIdcheese, "Cheesegroup")
-        await groupMemberCount(config.groupIdavifair, "Avifairgroup")
-        await groupMemberCount(config.groupIdfamily, "Familygroup")
-        await groupMemberCount(config.groupIdportalmedia, "Portalgroup")
+        await groupMemberCount(client, config.groupIdtheziver, "Zivergroup")
+        await groupMemberCount(client, config.groupIdonlyrusk, "Onlyruskgroup")
+        await groupMemberCount(client, config.groupIdcheese, "Cheesegroup")
+        await groupMemberCount(client, config.groupIdavifair, "Avifairgroup")
+        await groupMemberCount(client, config.groupIdfamily, "Familygroup")
+        await groupMemberCount(client, config.groupIdportalmedia, "Portalgroup")
         //300000
-    } catch (error) {
-        console.log("something went wrong with groupMemberCount")
-        sendServerErrorDC(client, "connect", error)
-        await connect(new Date)
-    }
+    // } catch (error) {
+    //     console.log("something went wrong with groupMemberCount")
+    //     sendServerErrorDC(client, "groupMemberCount", error)
+    //     await connect(new Date)
+    // }
 });

@@ -224,7 +224,14 @@ async function connect (now) {
 
 let state =  'offline';
 
-async function groupMemberCount(groupId, groupname) {
+/**
+ * 
+ * @param {Discord Client} client 
+ * @param {string} groupId 
+ * @param {string} groupname 
+ * @returns 
+ */
+async function groupMemberCount(client, groupId, groupname) {
     return new Promise((resolve, reject) => {
         GroupApi.getGroup(groupId).then( resp => {
             try {                
@@ -235,10 +242,12 @@ async function groupMemberCount(groupId, groupname) {
                 
             } catch (error) {
                 logError(error, "groupMemberCount"), "groupMemberCount".underline.red
+                sendServerErrorDC(client, "groupMemberCountTry", error)
                 reject(error)
             }  
         }).catch(async function (error) {
             console.warn(await logError(error, "groupMemberCount"), "groupMemberCount".underline.red)
+            sendServerErrorDC(client, "groupMemberCount", error)
             reject(error)
         })
     })
