@@ -25,7 +25,7 @@ To add commands you will have to create a new JavaScript file in the SlashComman
 > [!CAUTION]
 > Do not use the Commands folder as this has been depricated
 
-An example of a basic command would be
+An example of a basic command would be:
 ```js
 const SlashCommand = require("../Structures/SlashCommand.js");
 
@@ -39,7 +39,7 @@ module.exports = new SlashCommand({
 
 });
 ```
-An example of an embed
+An example of an embed would be:
 ```js
 const SlashCommand = require("../Structures/SlashCommand.js");
 const Discord = require("discord.js");
