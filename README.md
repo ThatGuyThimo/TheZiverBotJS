@@ -91,7 +91,10 @@ module.exports = new SlashCommand({
 3. Create a file inside the Data folder called cookies.json and leave it empty
 4. Create and populate the config.json in the Data folder (an example has been provided)
    ![image](/MD/Images/Example-config.jpg)
-5. Run the bot with ```node main.js```
+5. Run the bot with 
+   ```cli
+   node main.js
+   ```
 
 ---
 ## Default ussage
