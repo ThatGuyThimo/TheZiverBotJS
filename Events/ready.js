@@ -1,7 +1,7 @@
 const Event = require("../Structures/Event.js");
 
 const config = require("../Data/config.json");
-const groupConfig = require("../Data/groupConfig.json");
+const groupConfig = require("../Data/groupsConfig.json");
 
 const colors = require('colors');
 

@@ -22,7 +22,6 @@
     "libsodium-wrappers": "^0.7.9",
     "mysql": "^2.18.1",
     "node-fetch": "^3.1.0",
-    "nodemon": "^2.0.15",
     "opusscript": "^0.0.8",
     "totp-generator": "^0.0.14",
     "tough-cookie": "^4.1.3",
