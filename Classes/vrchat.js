@@ -13,7 +13,7 @@ const totp = require("totp-generator");
 const fs = require('fs');
 
 // const { dbInsert, dbFindAndDelete, dbFindAndBan, dbFindAndUnban, dbFind } = require("./mongo.js");
-const { logError } = require("./errorLogging.js");
+const { logError, sendServerErrorDC } = require("./errorLogging.js");
 
 colors.enable()
 

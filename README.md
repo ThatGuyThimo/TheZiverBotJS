@@ -81,6 +81,20 @@ module.exports = new SlashCommand({
 });
 ```
 
+### How to add a group
+
+To add a new group, add a new key-value pair to the object in groupConfig.json.
+The key should be the name of the group, and the value should be the group ID.
+The group ID can be found in the URL of the group's page on the [VRChat website](https://vrchat.com). 
+For example:
+![image](/MD/Images/GroupConfig.json.png)
+Than add paste the following line twice into Events/ready.js
+```js
+await groupMemberCount(client, groupConfig.GROUPNAME, "GROUPNAME")
+```
+Example:
+![image](/MD/Images/Ready.js.png)
+
 ## How to run the bot
 1. first make sure you have Node installed, if not you can download it from [here](https://nodejs.org/en) and create a bot at the [Discord developer portal](https://discord.com/developers/applications).
 
