@@ -90,7 +90,7 @@ For example:
 ![image](/MD/Images/GroupConfig.json.png)
 Than add paste the following line twice into Events/ready.js
 ```js
-await groupMemberCount(client, groupConfig.GROUPNAME, "GROUPNAME")
+await groupMemberCount(client, groupConfig.GROUPID, "GROUPNAME")
 ```
 Example:
 ![image](/MD/Images/Ready.js.png)
