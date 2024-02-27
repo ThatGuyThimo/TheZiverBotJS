@@ -10,6 +10,7 @@ import { router as avifair } from './routes/avifair.js'
 import { router as cheese } from './routes/cheese.js'
 import { router as family } from './routes/family.js'
 import { router as portal } from './routes/portalmedia.js'
+import { router as allRoute } from './routes/allRoute.js'
 
 const app = express()
 const httpPort = process.env.HTTPPORT
@@ -48,6 +49,7 @@ app.use('/avifair', avifair)
 app.use('/cheese', cheese)
 app.use('/family', family)
 app.use('/portal', portal)
+app.use('/all', allRoute)
 
 app.listen(httpPort, () => {
   console.log(`Http listening on port ${httpPort}`)
