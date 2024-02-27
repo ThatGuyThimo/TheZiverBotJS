@@ -4,13 +4,11 @@ import fs from 'fs'
 import bodyParser from 'body-parser';
 import 'dotenv/config';
 
-import { router as onlyrusk } from './routes/onlyrusk.js'
-import { router as theziver } from './routes/theziver.js'
-import { router as avifair } from './routes/avifair.js'
-import { router as cheese } from './routes/cheese.js'
-import { router as family } from './routes/family.js'
-import { router as portal } from './routes/portalmedia.js'
+
 import { router as allRoute } from './routes/allRoute.js'
+import { Route } from './classes/Route.js';
+
+const testRoute = new Route('Zivergroup');
 
 const app = express()
 const httpPort = process.env.HTTPPORT
@@ -43,18 +41,20 @@ app.use((req, res, next) => {
 
 // app.use('/cars', carRoutes)
 // app.use('/users', userRouter)
-app.use('/onlyrusk', onlyrusk)
-app.use('/theziver', theziver)
-app.use('/avifair', avifair)
-app.use('/cheese', cheese)
-app.use('/family', family)
-app.use('/portal', portal)
+
+app.use('/theziver', new Route('Zivergroup').router)
+app.use('/onlyrusk', new Route('Onlyruskgroup').router)
+app.use('/cheese', new Route('Cheesegroup').router)
+app.use('/avifair', new Route('Avifairgroup').router)
+app.use('/family', new Route('Familygroup').router)
+app.use('/portal', new Route('Portalgroup').router)
 app.use('/all', allRoute)
+
 
 app.listen(httpPort, () => {
   console.log(`Http listening on port ${httpPort}`)
 })
 
-https.createServer(options, app).listen(httpsPort, () => {
-  console.log(`Https listening on port ${httpsPort}`)
-});
+// https.createServer(options, app).listen(httpsPort, () => {
+//   console.log(`Https listening on port ${httpsPort}`)
+// });

@@ -32,47 +32,47 @@ module.exports = new SlashCommand({
                     },
                     {
                         name: `/intro`,
-                        value: `${client.user.username} introduction`,
+                        value: `Plays ${client.user.username} introduction`,
                         inline: false
                     },
                     {
                         name: `/cheese`,
-                        value: "plays cheese sound",
+                        value: "Plays cheese sound",
                         inline: false
                     },
                     {
                         name: `/burp`,
-                        value: "plays burp sound",
+                        value: "Plays burp sound",
                         inline: false
                     },
                     {
                         name: `/sticky`,
-                        value: "plays sticky keys sound",
+                        value: "Plays sticky keys sound",
                         inline: false
                     },
                     {
                         name: `/cabbagecat`,
-                        value: "plays cabbagecat sounds",
+                        value: "Plays cabbagecat sounds",
                         inline: false
                     },
                     {
                         name: `/beans`,
-                        value: "plays beans sound",
+                        value: "Plays beans sound",
                         inline: false
                     },
                     {
                         name: `/dice`,
-                        value: "gets random dice number",
+                        value: "Plays random dice number",
                         inline: false
                     },
                     {
                         name: `/bassdrop`,
-                        value: "plays bassdrop",
+                        value: "plays bassdrop sound",
                         inline: false
                     },
                     {
                         name: `/dinosaur`,
-                        value: "plays dinosaur",
+                        value: "plays dinosaur sound",
                         inline: false
                     },
                     {
