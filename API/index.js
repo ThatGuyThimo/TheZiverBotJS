@@ -1,14 +1,14 @@
-import express from 'express';
-import https from 'https';
+import express from 'express'
+import https from 'https'
 import fs from 'fs'
-import bodyParser from 'body-parser';
-import 'dotenv/config';
+import bodyParser from 'body-parser'
+import 'dotenv/config'
 
 
 import { router as allRoute } from './routes/allRoute.js'
-import { Route } from './classes/Route.js';
+import { Route } from './classes/Route.js'
 
-const testRoute = new Route('Zivergroup');
+const testRoute = new Route('Zivergroup')
 
 const app = express()
 const httpPort = process.env.HTTPPORT
@@ -24,23 +24,12 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-  // if( req.headers?.accept === "application/json") {
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE")
+
     next()
-  // } else {
-    // res.status(400).send("Bad Headers!")
-  // }
 })
-
-// app.get('/', (req, res) => {
-//   let data = JSON.parse(fs.readFileSync("../Data/members.json"))
-//   res.send(`${data.Zivergroup}`).status(200)
-// })
-
-// app.use('/cars', carRoutes)
-// app.use('/users', userRouter)
 
 app.use('/theziver', new Route('Zivergroup').router)
 app.use('/onlyrusk', new Route('Onlyruskgroup').router)
@@ -57,4 +46,4 @@ app.listen(httpPort, () => {
 
 https.createServer(options, app).listen(httpsPort, () => {
   console.log(`Https listening on port ${httpsPort}`)
-});
+})
