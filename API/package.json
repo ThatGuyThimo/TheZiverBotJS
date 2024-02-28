@@ -1,6 +1,6 @@
 {
   "name": "restfull-api",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "rest api for school",
   "main": "index.js",
   "type": "module",

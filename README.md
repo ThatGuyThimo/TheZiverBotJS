@@ -19,6 +19,20 @@ The bot running in the Discord is the JavaScript version as of Thursday 2 Decemb
 
 ---
 ## Documentation
+## How to run the bot
+1. first make sure you have Node installed, if not you can download it from [here](https://nodejs.org/en) and create a bot at the [Discord developer portal](https://discord.com/developers/applications).
+
+2. Install the required packages by running the following command inside of the folder.
+    ```cli
+    npm install
+    ```
+3. Create a file inside the Data folder called cookies.json and leave it empty.
+4. Create and populate the config.json in the Data folder (an example has been provided).
+   ![image](/MD/Images/Example-config.jpg)
+5. Run the bot with.
+   ```cli
+   node main.js
+   ```
 ### How to add commands
 To add commands you will have to create a new JavaScript file in the SlashCommands folder and name it appropiatly.
 ![image](/MD/Images/Slashcommands-Structure.jpg)
@@ -81,7 +95,7 @@ module.exports = new SlashCommand({
 });
 ```
 
-### How to add a group
+### How to add a group to the bot
 
 To add a new group, add a new key-value pair to the object in groupConfig.json.
 The key should be the name of the group, and the value should be the group ID.
@@ -95,20 +109,36 @@ await groupMemberCount(client, groupConfig.GROUPID, "GROUPNAME")
 Example:
 ![image](/MD/Images/Ready.js.png)
 
-## How to run the bot
-1. first make sure you have Node installed, if not you can download it from [here](https://nodejs.org/en) and create a bot at the [Discord developer portal](https://discord.com/developers/applications).
-
-2. Install the required packages by running the following command inside of the folder
+---
+## API 
+### How to run the API
+1. navigate to /API using the terminal.
+2. Install the required packages by running the following command inside of the folder.
     ```cli
     npm install
     ```
-3. Create a file inside the Data folder called cookies.json and leave it empty
-4. Create and populate the config.json in the Data folder (an example has been provided)
-   ![image](/MD/Images/Example-config.jpg)
-5. Run the bot with 
+3. Creat and populate the .env file according to the example below.
+   ![image](/MD/Images/Example-APIconfig.jpg)
+4. To be able to start the API you will need to provide SSL certificate and private key in API/index.js.
+   ![image](/MD/Images/Cert-example.JPG)
+   If you cannot provide the certificate or you dont want to use SSL you can comment the following lines in API/index.js.
+   ![image](/MD/Images/Https-Example.JPG)
+> [!CAUTION]
+> You have to comment or delete the https lines above for the API to work without an SSL certificate.
+5. Run the API with.
    ```cli
-   node main.js
+   node index.js
    ```
+
+
+### How to add a group to the API
+Add paste the following line into API/index.js.
+   ```js
+   app.use('/NAME_OF_ROUTE', new Route('NAME_OF_KEY').router)
+   ```
+   ![image](/MD/Images/API-Router.jpg)
+   The **"NAME_OF_ROUTE"** should be the name after the slash for example ```https://mydomain/myname```.
+   The **"NAME_OF_KEY"** should be the ***exact*** name you gave to the **"GROUPNAME"** field at [How to add a group to the bot](###How-to-add-a-group-to-the-bot).
 
 ---
 ## Default ussage
@@ -137,6 +167,15 @@ Example:
 - /bassdrop (Plays bassdrop sound)
 - /dinosaur (Plays dinosaur sound)
 - /huh (Plays hallmusic sound made by @Cunk)
+
+### API endpoints
+- /all (all the data from the other endpoints)
+- /theziver (thezivers vrchat group member count)
+- /onlyrusk (OnlyRusk vrchat group member count)
+- /avifair (Avifair vrchat group member count)
+- /family (FamilyFriendlyCult vrchat group member count)
+- /portal (PortalMedia vrchat group member count)
+- /cheese (Cheese vrchat group member count)
 
 ---
 ## Contributors
