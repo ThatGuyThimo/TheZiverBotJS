@@ -11,7 +11,7 @@ router.use((req, res, next) => {
 
 router.get('/', (req, res) => {
     let data = JSON.parse(fs.readFileSync("../Data/members.json"))
-    res.send(`${data.Zivergroup},${data.Onlyruskgroup},${data.Cheesegroup},${data.Avifairgroup},${data.Familygroup},${data.Portalgroup}`).status(200);
+    res.send(`${Object.values(data).join(',')}`).status(200);
 })
 
 export { router }
