@@ -119,6 +119,7 @@ Example:
     ```
 3. Creat and populate the .env file according to the example below.
    ![image](/MD/Images/Example-APIconfig.jpg)
+   
 4. To be able to start the API you will need to provide SSL certificate and private key in API/index.js.
    ![image](/MD/Images/Cert-example.JPG)
    If you cannot provide the certificate or you dont want to use SSL you can comment the following lines in API/index.js.
