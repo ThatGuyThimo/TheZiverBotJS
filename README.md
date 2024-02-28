@@ -122,7 +122,9 @@ Example:
    ![image](/MD/Images/Example-APIconfig.jpg)
 4. To be able to start the API you will need to provide SSL certificate and private key in API/index.js.
    ![image](/MD/Images/Cert-example.JPG)
+
    If you cannot provide the certificate or you dont want to use SSL you can comment the following lines in API/index.js.
+
    ![image](/MD/Images/Https-Example.JPG)
 > [!CAUTION]
 > You have to comment or delete the https lines above for the API to work without an SSL certificate.
@@ -138,6 +140,7 @@ Add paste the following line into API/index.js.
    app.use('/NAME_OF_ROUTE', new Route('NAME_OF_KEY').router)
    ```
    ![image](/MD/Images/API-Router.jpg)
+
    The **"NAME_OF_ROUTE"** should be the name after the slash for example ```https://mydomain/myname```.
    The **"NAME_OF_KEY"** should be the ***exact*** name you gave to the **"GROUPNAME"** field at [How to add a group to the bot](###How-to-add-a-group-to-the-bot).
 
