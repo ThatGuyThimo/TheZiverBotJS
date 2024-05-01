@@ -37,6 +37,7 @@ app.use('/cheese', new Route('Cheesegroup').router)
 app.use('/avifair', new Route('Avifairgroup').router)
 app.use('/family', new Route('Familygroup').router)
 app.use('/portal', new Route('Portalgroup').router)
+app.use('/gamble', new Route('Gamblegroup').router)
 app.use('/all', allRoute)
 
 
