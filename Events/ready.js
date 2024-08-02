@@ -36,12 +36,13 @@ module.exports = new Event("ready",async client => {
             await groupMemberCount(client, groupConfig.groupIdfamily, "Familygroup")
             await groupMemberCount(client, groupConfig.groupIdportalmedia, "Portalgroup")
             await groupMemberCount(client, groupConfig.groupIdgamble, "Gamblegroup")
+            await groupMemberCount(client, groupConfig.groupIdvapor, "Vaporgroup")
         } catch (error) {
             console.log("something went wrong with groupMemberCount Event")
             sendServerErrorDC(client, "groupMemberCount", error)
             await connect(new Date)
         }
-    } , 300000);
+    } , 600000);
     await groupMemberCount(client, groupConfig.groupIdtheziver, "Zivergroup")
     await groupMemberCount(client, groupConfig.groupIdonlyrusk, "Onlyruskgroup")
     await groupMemberCount(client, groupConfig.groupIdcheese, "Cheesegroup")
@@ -49,4 +50,5 @@ module.exports = new Event("ready",async client => {
     await groupMemberCount(client, groupConfig.groupIdfamily, "Familygroup")
     await groupMemberCount(client, groupConfig.groupIdportalmedia, "Portalgroup")
     await groupMemberCount(client, groupConfig.groupIdgamble, "Gamblegroup")
+    await groupMemberCount(client, groupConfig.groupIdvapor, "Vaporgroup")
 });
