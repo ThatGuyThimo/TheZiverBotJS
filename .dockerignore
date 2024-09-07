@@ -1,0 +1,5 @@
+node_modules
+Data/client_secret.json
+API
+.env
+Data/coockies.json

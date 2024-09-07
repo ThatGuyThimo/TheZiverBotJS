@@ -1,0 +1,16 @@
+FROM node:20
+WORKDIR /app
+
+COPY package.json ./
+RUN npm install
+
+ENV HTTPPORT=2000
+ENV HTTPSPORT=8000
+ENV LOGGINGDIR="./"
+
+COPY . .
+
+EXPOSE 2000
+EXPOSE 8000
+
+CMD ["node", "index.js"]

@@ -1,16 +1,11 @@
 {
-    "api_key": "youtube api key",
-    "token": "discord bot token",
     "prefix": "depricated do not use", 
     "guildId": "guild id",
     "clientId": "bot client id",
     "color": "hex color for embeds",
-    "password": "vrchat account password",
-    "email": "vrchat account email",
     "timeout": "900000",
     "loggingDir": "./",
     "loggingChannel": "discord channel id where logs are sent",
     "botVersion": "version number",
-    "userAgent": "botname/version email",
-    "VRC_2FA_SECRET": "2fa secret"
+    "userAgent": "botname/version email"
 }

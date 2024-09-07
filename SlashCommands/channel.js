@@ -1,6 +1,6 @@
 const SlashCommand = require("../Structures/SlashCommand.js");
 
-const { getChannel } = require("../Classes/youtube.js");
+// const { getChannel } = require("../Classes/youtube.js");
 
 const config = require("../Data/config.json");
 
@@ -15,7 +15,7 @@ module.exports = new SlashCommand({
     async run(message, args, client) {
 
         // try {
-        //     const data = getChannel(config['api_key']);
+        //     const data = getChannel(process.env.API_KEY);
         //     console.log(data)
     
         //     const embed = new Discord.EmbedBuilder()

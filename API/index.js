@@ -13,11 +13,17 @@ const testRoute = new Route('Zivergroup')
 const app = express()
 const httpPort = process.env.HTTPPORT
 const httpsPort = process.env.HTTPSPORT
+const keypath = "./data/certs/api.theziver.com.privkey.pem"
+const certpath = "./data/certs/api.theziver.com.pem"
 
-const options = {
-  key: fs.readFileSync("./data/certs/api.theziver.com.privkey.pem"),
-  cert: fs.readFileSync("./data/certs/api.theziver.com.pem"),
-  passphrase: process.env.PHASSPHRASE
+let options
+
+if (fs.existsSync(keypath) || fs.existsSync(certpath)) {
+  options = {
+    key: fs.readFileSync("./data/certs/api.theziver.com.privkey.pem"),
+    cert: fs.readFileSync("./data/certs/api.theziver.com.pem"),
+    passphrase: process.env.PHASSPHRASE
+  }
 }
 
 app.use(bodyParser.json())
@@ -46,6 +52,8 @@ app.listen(httpPort, () => {
   console.log(`Http listening on port ${httpPort}`)
 })
 
-https.createServer(options, app).listen(httpsPort, () => {
-  console.log(`Https listening on port ${httpsPort}`)
-})
+if (options !== undefined) {
+  https.createServer(options, app).listen(httpsPort, () => {
+    console.log(`Https listening on port ${httpsPort}`)
+  })
+}
