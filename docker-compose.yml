@@ -1,8 +1,20 @@
-version: '1'
 services:
-  Theziverdcbot:
-    build: .
-  Theziverapi:
-    build: ./API
+  TheZiverDCBot:
+    image: thimodehaan/theziverbot:1.4
+    volumes:
+      - /theziverbotdata:/app/Data/shared
+    env_file:
+      - stack.env
+    restart: unless-stopped
+    
+  TheZiverApi:
+    image: thimodehaan/theziverbotapi:1.1
+    env_file:
+      - stack.env
+    volumes:
+      - /theziverbotdata:/app/data/shared
+      - /home/thimo/certs:/app/data/certs
     ports:
-      - "8000:8000"
+      - "8000:7999"
+      - "2000:2000"
+    restart: unless-stopped

@@ -15,7 +15,7 @@ class Route {
     }
 
     getData(req, res) {
-        let data = JSON.parse(fs.readFileSync("../Data/members.json"));
+        let data = JSON.parse(fs.readFileSync("/app/data/shared/members.json"));
         res.send(`${data[this.key]}`).status(200);
     }
 }

@@ -245,8 +245,15 @@ let state =  'offline';
 async function groupMemberCount(client, groupId, groupname) {
     return new Promise((resolve, reject) => {
         GroupApi.getGroup(groupId).then( resp => {
-            try {                
-                let membersjson = JSON.parse(fs.readFileSync("./Data/members.json", "utf-8"))
+            try {
+                const path = './Data/shared/members.json';
+
+                // Check if the file exists
+                if (!fs.existsSync(path)) {
+                    // Create an empty JSON file
+                    fs.writeFileSync(path, JSON.stringify({}), 'utf-8');
+                }  
+                let membersjson = JSON.parse(fs.readFileSync(path, "utf-8"))
                 membersjson[groupname] = resp.data.memberCount
                 writeMemberCount(membersjson)
                 resolve(resp.data.memberCount)
@@ -265,7 +272,7 @@ async function groupMemberCount(client, groupId, groupname) {
 }
 
 async function writeMemberCount(membersjson) {
-    fs.writeFile("./Data/members.json", JSON.stringify(membersjson), function (error) {
+    fs.writeFile("./Data/shared/members.json", JSON.stringify(membersjson), function (error) {
         if (error) {
             console.log(error)
             reject(error)

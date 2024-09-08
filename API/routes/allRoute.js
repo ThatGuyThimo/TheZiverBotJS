@@ -10,7 +10,7 @@ router.use((req, res, next) => {
 });
 
 router.get('/', (req, res) => {
-    let data = JSON.parse(fs.readFileSync("../Data/members.json"))
+    let data = JSON.parse(fs.readFileSync("/app/data/shared/members.json"))
     res.send(`${Object.values(data).join(',')}`).status(200);
 })
 
