@@ -1,0 +1,4 @@
+node_modules
+.env
+data\certs\api.theziver.com.pem
+data\certs\api.theziver.com.privkey.pem

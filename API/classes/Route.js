@@ -15,7 +15,10 @@ class Route {
     }
 
     getData(req, res) {
-        let data = JSON.parse(fs.readFileSync("../Data/members.json"));
+        let data = JSON.parse(fs.readFileSync(process.env.MEMBERFILE));
+        if (!data[this.key]) {
+            return res.status(404).send('Group not found');
+        }
         res.send(`${data[this.key]}`).status(200);
     }
 }

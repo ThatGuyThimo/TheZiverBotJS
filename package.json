@@ -16,6 +16,7 @@
     "colors": "^1.4.0",
     "discord-api-types": "^0.37.17",
     "discord.js": "^14.9.0",
+    "dotenv": "^16.4.5",
     "ffmpeg-static": "^4.4.0",
     "google-auth-library": "^7.10.2",
     "googleapis": "^92.0.0",

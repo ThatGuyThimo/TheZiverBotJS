@@ -37,6 +37,8 @@ module.exports = new Event("ready",async client => {
             await groupMemberCount(client, groupConfig.groupIdportalmedia, "Portalgroup")
             await groupMemberCount(client, groupConfig.groupIdgamble, "Gamblegroup")
             await groupMemberCount(client, groupConfig.groupIdvapor, "Vaporgroup")
+            await groupMemberCount(client, groupConfig.groupIdrat, "Ratgroup")
+            await groupMemberCount(client, groupConfig.groupIdrose, "Rosegroup")
         } catch (error) {
             console.log("something went wrong with groupMemberCount Event")
             sendServerErrorDC(client, "groupMemberCount", error)
@@ -51,4 +53,6 @@ module.exports = new Event("ready",async client => {
     await groupMemberCount(client, groupConfig.groupIdportalmedia, "Portalgroup")
     await groupMemberCount(client, groupConfig.groupIdgamble, "Gamblegroup")
     await groupMemberCount(client, groupConfig.groupIdvapor, "Vaporgroup")
+    await groupMemberCount(client, groupConfig.groupIdrat, "Ratgroup")
+    await groupMemberCount(client, groupConfig.groupIdrose, "Rosegroup")
 });

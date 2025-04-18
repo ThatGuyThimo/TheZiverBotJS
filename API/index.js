@@ -13,11 +13,17 @@ const testRoute = new Route('Zivergroup')
 const app = express()
 const httpPort = process.env.HTTPPORT
 const httpsPort = process.env.HTTPSPORT
+const keypath = process.env.KEYFILE
+const certpath = process.env.CERTFILE
 
-const options = {
-  key: fs.readFileSync("./data/certs/api.theziver.com.privkey.pem"),
-  cert: fs.readFileSync("./data/certs/api.theziver.com.pem"),
-  passphrase: process.env.PHASSPHRASE
+let options
+
+if (fs.existsSync(keypath) || fs.existsSync(certpath)) {
+  options = {
+    key: fs.readFileSync(keypath),
+    cert: fs.readFileSync(certpath),
+    passphrase: process.env.PHASSPHRASE
+  }
 }
 
 app.use(bodyParser.json())
@@ -39,6 +45,8 @@ app.use('/family', new Route('Familygroup').router)
 app.use('/portal', new Route('Portalgroup').router)
 app.use('/gamble', new Route('Gamblegroup').router)
 app.use('/vapor', new Route('Vaporgroup').router)
+app.use('/rat', new Route('Ratgroup').router)
+app.use('/rose', new Route('Rosegroup').router)
 app.use('/all', allRoute)
 
 
@@ -46,6 +54,8 @@ app.listen(httpPort, () => {
   console.log(`Http listening on port ${httpPort}`)
 })
 
-https.createServer(options, app).listen(httpsPort, () => {
-  console.log(`Https listening on port ${httpsPort}`)
-})
+if (options !== undefined) {
+  https.createServer(options, app).listen(httpsPort, () => {
+    console.log(`Https listening on port ${httpsPort}`)
+  })
+}

@@ -4,3 +4,4 @@ Data/client_secret.json
 Data/cookies.json
 /errorLogs
 Data/youtubeToken.json
+.env

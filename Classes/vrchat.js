@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const vrchat = require("vrchat");
 
 const axios = require('axios');
@@ -12,6 +14,7 @@ const totp = require("totp-generator");
 
 const fs = require('fs');
 
+
 // const { dbInsert, dbFindAndDelete, dbFindAndBan, dbFindAndUnban, dbFind } = require("./mongo.js");
 const { logError, sendServerErrorDC } = require("./errorLogging.js");
 
@@ -24,8 +27,8 @@ lastPing = lastPing.getTime()
 let loggedin = false
 
 const configuration = new vrchat.Configuration({
-    username: encodeURI(config.email),
-    password: encodeURI(config.password)
+    username: encodeURI(process.env.EMAIL),
+    password: encodeURI(process.env.PASSWORD),
 });
 
 
@@ -57,8 +60,16 @@ async function connect (now) {
     
             let auth_token = null
             let two_auth_token = null
+
+            const path = './Data/cookies.json';
+
+            // Check if the file exists
+            if (!fs.existsSync(path)) {
+                // Create an empty JSON file
+                fs.writeFileSync(path, JSON.stringify({}), 'utf-8');
+            }
     
-            let cookies = fs.readFileSync("./Data/cookies.json", "utf-8");
+            let cookies = fs.readFileSync(path, "utf-8");
             if (cookies !== "") {
                 axios.defaults.jar = tough.CookieJar.fromJSON(JSON.parse(cookies));
                 cookies = JSON.parse(cookies)
@@ -149,7 +160,7 @@ async function connect (now) {
                     if (currentUser.displayName === undefined) {
                 
                         console.log("Attempting 2FA".blue);
-                        const token = totp(config.VRC_2FA_SECRET);
+                        const token = totp(process.env.VRC_2FA_SECRET);
                 
                         await AuthenticationApi.verify2FA({ code: token }).then( resp => {
                             console.log(`Verified: ${resp.data.verified}`.blue);
@@ -234,8 +245,15 @@ let state =  'offline';
 async function groupMemberCount(client, groupId, groupname) {
     return new Promise((resolve, reject) => {
         GroupApi.getGroup(groupId).then( resp => {
-            try {                
-                let membersjson = JSON.parse(fs.readFileSync("./Data/members.json", "utf-8"))
+            try {
+                const path = './Data/shared/members.json';
+
+                // Check if the file exists
+                if (!fs.existsSync(path)) {
+                    // Create an empty JSON file
+                    fs.writeFileSync(path, JSON.stringify({}), 'utf-8');
+                }  
+                let membersjson = JSON.parse(fs.readFileSync(path, "utf-8"))
                 membersjson[groupname] = resp.data.memberCount
                 writeMemberCount(membersjson)
                 resolve(resp.data.memberCount)
@@ -254,7 +272,7 @@ async function groupMemberCount(client, groupId, groupname) {
 }
 
 async function writeMemberCount(membersjson) {
-    fs.writeFile("./Data/members.json", JSON.stringify(membersjson), function (error) {
+    fs.writeFile("./Data/shared/members.json", JSON.stringify(membersjson), function (error) {
         if (error) {
             console.log(error)
             reject(error)
