@@ -13,15 +13,15 @@ const testRoute = new Route('Zivergroup')
 const app = express()
 const httpPort = process.env.HTTPPORT
 const httpsPort = process.env.HTTPSPORT
-const keypath = "./data/certs/api.theziver.com.privkey.pem"
-const certpath = "./data/certs/api.theziver.com.pem"
+const keypath = process.env.KEYFILE
+const certpath = process.env.CERTFILE
 
 let options
 
 if (fs.existsSync(keypath) || fs.existsSync(certpath)) {
   options = {
-    key: fs.readFileSync("./data/certs/api.theziver.com.privkey.pem"),
-    cert: fs.readFileSync("./data/certs/api.theziver.com.pem"),
+    key: fs.readFileSync(keypath),
+    cert: fs.readFileSync(certpath),
     passphrase: process.env.PHASSPHRASE
   }
 }

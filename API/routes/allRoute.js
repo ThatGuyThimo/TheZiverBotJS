@@ -1,5 +1,6 @@
 import express from 'express';
 import fs from 'fs'
+import 'dotenv/config'
 const router = express.Router()
 
 router.use((req, res, next) => {
@@ -10,7 +11,10 @@ router.use((req, res, next) => {
 });
 
 router.get('/', (req, res) => {
-    let data = JSON.parse(fs.readFileSync("/app/data/shared/members.json"))
+    let data = JSON.parse(fs.readFileSync(process.env.MEMBERFILE))
+    if (!data) {
+        return res.status(404).send('not found');
+    }
     res.send(`${Object.values(data).join(',')}`).status(200);
 })
 
