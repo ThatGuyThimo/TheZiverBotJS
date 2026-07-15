@@ -37,16 +37,12 @@ app.use((req, res, next) => {
     next()
 })
 
-app.use('/theziver', new Route('Zivergroup').router)
-app.use('/onlyrusk', new Route('Onlyruskgroup').router)
-app.use('/cheese', new Route('Cheesegroup').router)
-app.use('/avifair', new Route('Avifairgroup').router)
-app.use('/family', new Route('Familygroup').router)
-app.use('/portal', new Route('Portalgroup').router)
-app.use('/gamble', new Route('Gamblegroup').router)
-app.use('/vapor', new Route('Vaporgroup').router)
-app.use('/rat', new Route('Ratgroup').router)
-app.use('/rose', new Route('Rosegroup').router)
+let members = JSON.parse(fs.readFileSync(process.env.MEMBERFILE));
+
+for (const [groupName, memberCount] of Object.entries(members)) {
+    app.use(`/${groupName}`, new Route(groupName).router)
+    console.log(`Route for ${groupName} (${memberCount}) has been set up.`)
+}
 app.use('/all', allRoute)
 
 

@@ -2,3 +2,8 @@ node_modules
 .env
 data\certs\api.theziver.com.pem
 data\certs\api.theziver.com.privkey.pem
+data\certs\thimodehaan.com.pem
+data\certs\thimodehaan.com.privkey.pem
+data\certs\www_thimodehaan_com.crt
+data\certs\www_thimodehaan_com.p7b
+data\certs\www_thimodehaan_com.ca-bundle

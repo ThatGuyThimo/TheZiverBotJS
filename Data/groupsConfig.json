@@ -1,12 +1,14 @@
 {
-    "groupIdtheziver": "grp_2b910dc4-e984-4fd5-813c-877edcea29d2",
-    "groupIdonlyrusk": "grp_7a73b817-99e6-4274-a635-db3272576ef7",
-    "groupIdcheese": "grp_b99817e0-77c9-46a4-9247-3c84a2ca6313",
-    "groupIdavifair": "grp_5b79e1c3-0f65-4e99-956f-663619382d81",
-    "groupIdfamily": "grp_7171bda3-6954-440d-a92f-7bf58d4df206",
-    "groupIdportalmedia": "grp_33456634-f728-4fd9-abf6-6e21996f39d1",
-    "groupIdgamble": "grp_98781622-e47c-4b2f-bd6b-3edd52e4522f",
-    "groupIdvapor": "grp_ef86881c-46ae-41cf-a96b-ee112796fbb8",
-    "groupIdrat": "grp_e88dee2f-928c-4f41-a52d-0ff0fdd9c34a",
-    "groupIdrose": "grp_f5ad5ea3-959c-4044-b7ae-70c427cf43aa"
+    "groupIdtheziver": {"id": "grp_2b910dc4-e984-4fd5-813c-877edcea29d2", "name": "theziver"},
+    "groupIdonlyrusk": {"id": "grp_7a73b817-99e6-4274-a635-db3272576ef7", "name": "onlyrusk"},
+    "groupIdcheese": {"id": "grp_b99817e0-77c9-46a4-9247-3c84a2ca6313", "name": "cheese"},
+    "groupIdavifair": {"id": "grp_5b79e1c3-0f65-4e99-956f-663619382d81", "name": "avifair"},
+    "groupIdfamily": {"id": "grp_7171bda3-6954-440d-a92f-7bf58d4df206", "name": "family"},
+    "groupIdportalmedia": {"id": "grp_33456634-f728-4fd9-abf6-6e21996f39d1", "name": "portalmedia"},
+    "groupIdgamble": {"id": "grp_98781622-e47c-4b2f-bd6b-3edd52e4522f", "name": "gamble"},
+    "groupIdvapor": {"id": "grp_ef86881c-46ae-41cf-a96b-ee112796fbb8", "name": "vapor"},
+    "groupIdrat": {"id": "grp_e88dee2f-928c-4f41-a52d-0ff0fdd9c34a", "name": "rat"},
+    "groupIdrose": {"id": "grp_f5ad5ea3-959c-4044-b7ae-70c427cf43aa", "name": "rose"},
+    "groupIdcosmic": {"id": "grp_84401eb7-268c-4f43-adc3-38ec9207084f", "name": "cosmic"}
+
 }

@@ -29,30 +29,23 @@ module.exports = new Event("ready",async client => {
     
     setInterval( async () => {
         try {
-            await groupMemberCount(client, groupConfig.groupIdtheziver, "Zivergroup")
-            await groupMemberCount(client, groupConfig.groupIdonlyrusk, "Onlyruskgroup")
-            await groupMemberCount(client, groupConfig.groupIdcheese, "Cheesegroup")
-            await groupMemberCount(client, groupConfig.groupIdavifair, "Avifairgroup")
-            await groupMemberCount(client, groupConfig.groupIdfamily, "Familygroup")
-            await groupMemberCount(client, groupConfig.groupIdportalmedia, "Portalgroup")
-            await groupMemberCount(client, groupConfig.groupIdgamble, "Gamblegroup")
-            await groupMemberCount(client, groupConfig.groupIdvapor, "Vaporgroup")
-            await groupMemberCount(client, groupConfig.groupIdrat, "Ratgroup")
-            await groupMemberCount(client, groupConfig.groupIdrose, "Rosegroup")
+            for (const [key, group] of Object.entries(groupConfig)) {
+                if (typeof group === 'object' && group.id && group.name) {
+                    await groupMemberCount(client, group.id, group.name);
+                }
+            }
         } catch (error) {
             console.log("something went wrong with groupMemberCount Event")
             sendServerErrorDC(client, "groupMemberCount", error)
             await connect(new Date)
         }
     } , 600000);
-    await groupMemberCount(client, groupConfig.groupIdtheziver, "Zivergroup")
-    await groupMemberCount(client, groupConfig.groupIdonlyrusk, "Onlyruskgroup")
-    await groupMemberCount(client, groupConfig.groupIdcheese, "Cheesegroup")
-    await groupMemberCount(client, groupConfig.groupIdavifair, "Avifairgroup")
-    await groupMemberCount(client, groupConfig.groupIdfamily, "Familygroup")
-    await groupMemberCount(client, groupConfig.groupIdportalmedia, "Portalgroup")
-    await groupMemberCount(client, groupConfig.groupIdgamble, "Gamblegroup")
-    await groupMemberCount(client, groupConfig.groupIdvapor, "Vaporgroup")
-    await groupMemberCount(client, groupConfig.groupIdrat, "Ratgroup")
-    await groupMemberCount(client, groupConfig.groupIdrose, "Rosegroup")
+    for (const [key, group] of Object.entries(groupConfig)) {
+        if (typeof group === 'object' && group.id && group.name) {
+            await groupMemberCount(client, group.id, group.name);
+            console.log(`Group member count for ${group.name} (${group.id}) has been updated.`.green);
+        } else {
+            console.log(`Invalid group configuration for key: ${key}`.red);
+        }
+    } 
 });
